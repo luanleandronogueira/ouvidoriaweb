@@ -1,0 +1,22 @@
+body {
+
+    font-family: 'Nunito', sans-serif !important;
+    background-color: #f6f8fa !important;
+    /* background-color: blue !important; */
+
+}
+
+a {
+    text-decoration: none !important; 
+
+}
+
+.login_1 {
+
+    /* border: red 1px solid ; */
+    padding: 150px;
+
+}
+
+
+
