@@ -18,5 +18,37 @@ a {
 
 }
 
+.material-symbols-outlined {
+    font-size: 100px !important; /* ou o tamanho desejado */
+  }
 
+.form-cadastro {
+
+    /* border: black 1px solid !important; */
+    border-radius: 20px;
+    font-weight: bold;
+    background-color: white;
+    padding: 20px;
+
+}
+
+.btn1 {
+    border-radius: 40px !important;  
+    padding-left: 30px !important;
+    padding-right: 30px !important;
+}
+
+input[type=text], input[type=email], input[type=password]{
+
+    border-radius: 20px;
+
+}
+
+.valido {
+    border: 2px solid rgb(13, 241, 13);
+  }
+  
+  .invalido {
+    border: 2px solid red;
+  }
 
