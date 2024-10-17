@@ -8,7 +8,7 @@ include 'controladores/ControllerLogin.php';
             <!-- Tela de Login -->
             <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mt-1 login_1">
                 <center>
-                    <h3>Ouvidoria Web</h3>
+                    <h3>Bem-Vindo</h3>
                 </center>
                 <form class="mt-3" action="" method="">
                     <div>
@@ -34,8 +34,10 @@ include 'controladores/ControllerLogin.php';
                     </div>
                 </form>
             </div>
-            <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mt-1 login_2">
-
+            <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mt-1 d-sm d-md login_1">
+                <div class="text-center">
+                    <img src="assets/images/ouvidoria_web.png" alt="" width="400px">
+                </div>
             </div>
         </div>
 
