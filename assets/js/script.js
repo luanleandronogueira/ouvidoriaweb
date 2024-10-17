@@ -90,37 +90,43 @@ function validaCPF(cpf) {
   function consulta_cpf(){
 
     const usuario_cpf = document.getElementById('cpf_usuario').value
-    const cpf_validado = document.getElementById('cpf_validado')
-    const API = 'provedores/ConsultaCPF.php?cpf_usuario=' + usuario_cpf
+    if(usuario_cpf.length > 0){
 
-    fetch(API)
-      .then(response => {
-        // console.log('Response', response)
-        return response.json()
-      }).then(dados => {
-        //  console.log('Dados', dados)
-        if(dados == 0) {
-          // console.log('Funcionou', dados)
-          cpf_validado.classList.remove('text-danger')
+      const cpf_validado = document.getElementById('cpf_validado')
+      const API = 'provedores/ConsultaCPF.php?cpf_usuario=' + usuario_cpf
+  
+      fetch(API)
+        .then(response => {
+          // console.log('Response', response)
+          return response.json()
+        }).then(dados => {
+          //  console.log('Dados', dados)
+          if(dados == 0) {
+            // console.log('Funcionou', dados)
+            cpf_validado.classList.remove('text-danger')
+  
+            cpf_validado.textContent = 'CPF está disponível para cadastro';
+            cpf_validado.classList.add('text-success')
+            usuario_cpf.classList.add('border-success')
+            cpf_campo.innerHTML = '</br>';
+            
+          } else {
+  
+            cpf_validado.textContent = 'CPF já cadastrado!';
+            cpf_validado.classList.add('text-danger')
+            usuario_cpf.classList.add('border-danger')
+            cpf_campo.innerHTML = '<br>';
+  
+          }
+        }).catch(error => {
+          console.log(error)
+      })
 
-          cpf_validado.textContent = 'CPF está disponível para cadastro';
-          cpf_validado.classList.add('text-success')
-          usuario_cpf.classList.add('border-success')
-          cpf_campo.innerHTML = '</br>';
-          
+    } else {
+      cpf_validado.classList.remove('text-danger')
+      cpf_validado.classList.remove('text-success')
 
-        } else {
-
-          cpf_validado.textContent = 'CPF já cadastrado!';
-          cpf_validado.classList.add('text-danger')
-          usuario_cpf.classList.add('border-danger')
-          cpf_campo.innerHTML = '<br>';
-
-        }
-      }).catch(error => {
-        console.log(error)
-    })
-
+    }
   }
 
   // function contarCaracteres() {
