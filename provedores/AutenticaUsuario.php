@@ -9,10 +9,6 @@ if (isset($_SERVER['REQUEST_METHOD']) && $_SERVER['REQUEST_METHOD'] === 'POST') 
 
     if (!empty($_POST)) {
 
-        echo '<pre>';
-            print_r($_POST);
-        echo '</pre>';
-
         if(strlen($_POST['login_usuario']) > 11){
             
             $login_usuario = trim(filter_var($_POST['login_usuario'], FILTER_SANITIZE_FULL_SPECIAL_CHARS));
@@ -30,15 +26,40 @@ if (isset($_SERVER['REQUEST_METHOD']) && $_SERVER['REQUEST_METHOD'] === 'POST') 
             header("Location: ../login.php?status=nao_autorizado1");
             die();
         }
-        echo $login_usuario;
+
         $consulta_usuario = $usuario->consulta_usuario($login_usuario);
 
-        echo '<pre>';
-            print_r($consulta_usuario);
-        echo '</pre>';
+        if(!empty($consulta_usuario)){
+            
+            if(password_verify($senha_usuario, $consulta_usuario['senha_usuario'])) {
 
+                $_SESSION = $consulta_usuario;
+                $_SESSION['csrf_token'] = $_POST['csrf_token'];
+                header("Location: ../dashboard.php");
+
+            } else {
+
+                header("Location: ../login.php?status=senha_invalida&&AutenticaUsuario");
+                die();
+            }
+
+        } else {
+
+            header("Location: ../login.php?status=log_senha_invalida&&AutenticaUsuario");
+            die();
+        }
+
+    } else {
+
+        header("Location: ../login.php?status=nao_autorizado1&&AutenticaUsuario");
+        die();
 
     }
+
+} else {
+
+    header("Location: ../login.php?status=nao_autorizado2&&AutenticaUsuario");
+    die();
 
 }
 

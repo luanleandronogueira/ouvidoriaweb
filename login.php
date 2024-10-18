@@ -4,9 +4,11 @@ require_once 'provedores/Classes.php';
 include 'controladores/ControllerLogin.php';
 
 // Gerar o token na primeira requisição
-if (!isset($_SESSION['csrf_token'])) {
-    $_SESSION['csrf_token'] = gerarTokenCSRF();
+if (!isset($csrf_token['csrf_token'])) {
+    $csrf_token['csrf_token'] = gerarTokenCSRF();
 }
+
+//print_r($csrf_token);
 
 ?>
 <script>
@@ -45,7 +47,7 @@ if (!isset($_SESSION['csrf_token'])) {
                         </div>
                         
                         <!-- Token de verificação -->
-                        <input type="hidden" name="csrf_token" id="csrf_token" value="<?=$_SESSION['csrf_token']?>">
+                        <input type="hidden" name="csrf_token" id="csrf_token" value="<?=$csrf_token['csrf_token']?>">
 
                         <div class="text-center">
                             <a href="recuperar_senha.php">Esqueci à Senha</a> | <a href="criar_usuario.php">Criar um Usuário</a>
@@ -56,7 +58,7 @@ if (!isset($_SESSION['csrf_token'])) {
                         <!-- <hr> -->
                         <div class="text-center mt-3">
                             <span>Entrar com à conta Google</span></br>
-                            <a href=""><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTN5ffnsOXJgZzREaRaiSFb5-kln2v48bf9IA&s" width="75px" alt=""></a>
+                            <a href=""><img src="assets/images/google_img.png" width="75px" alt=""></a>
                         </div>
                     </div>
                 </form>

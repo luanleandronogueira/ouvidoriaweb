@@ -98,7 +98,7 @@ function gerarTokenCSRF()
 // Função para verificar o token
 function verificarTokenCSRF()
 {
-    if (!isset($_SESSION['csrf_token']) || !isset($_POST['csrf_token']) || $_SESSION['csrf_token'] !== $_POST['csrf_token']) {
+    if (!isset($_POST['csrf_token'])  || $_POST['csrf_token'] !== $_POST['csrf_token']) {
         header("Location: ../login.php?status=Ataque_CSRF_detectado");
         die('Ataque CSRF detectado!');
     }
@@ -108,12 +108,12 @@ function verificaSessao($mensagemErro = 'Sessão inválida. Faça login novament
 {
     if (!isset($_SESSION) || !isset($_SESSION['csrf_token'])) {
         // Verificar se o token CSRF enviado na requisição é válido (se aplicável)
-        if (isset($_POST['csrf_token']) && $_POST['csrf_token'] !== $_SESSION['csrf_token']) {
+        if (empty($_SESSION['csrf_token'])) {
             $mensagemErro = 'Token CSRF inválido. Possível ataque.';
         }
 
         // Redirecionar para a página de login com a mensagem de erro personalizada
-        header("Location: ../index.php?status=$mensagemErro");
+        header("Location: login.php?status=$mensagemErro");
         die();
     }
 }
