@@ -17,12 +17,38 @@
 
 <body>
     <header>
-        <nav class="navbar bg-body-tertiary">
+        <nav class="nav_controller navbar d-none d-lg-block d-xl-block d-xxl-block">
             <div class="container-fluid">
-                <span class="navbar-text">
-                    Navbar text with an inline element
-                </span>
+                <div class="container ">
+                    <div class="row ">
+                        <div class="col-3 col-xl-3 col-lg-3">
+                                <a href="dashboard.php"><img src="assets/images/logo_ouvidoria.png" width="200px" alt="Ouvidoria Web"></a>
+                        </div>
+                        <div class="col-6 col-xl-6 col-lg-6">
+                            <div class="cont_sessao2">
+                                <span class="spanPersonal">
+                                    <strong><a class="aPersonal" href="">Início</a></strong>
+                                </span>
+                                <span class="spanPersonal">
+                                    <strong><a class="aPersonal" href="">Registrar Manifestação</a></strong>
+                                </span>
+                                <span class="spanPersonal">
+                                    <strong><a class="aPersonal" href="">Perguntas Frequentes</a></strong>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="col-3 col-xl-3 col-lg-3  text-end">
+                            <div class="cont_sessao text-center" >
+                                <strong>Bem Vindo | <?= $_SESSION['nome_usuario'] ?></strong></br>
+                                <a href="">Ver Perfil</a> | <a href="sair.php">Sair </a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
             </div>
+
         </nav>
     </header>
     <main>
