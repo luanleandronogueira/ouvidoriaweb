@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once 'controladores/Controller.php';
+require_once 'controladores/ControllerLogin.php';
 require_once 'provedores/Classes.php';
 
 // Gerar o token na primeira requisição

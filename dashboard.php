@@ -9,10 +9,7 @@ require_once 'controladores/Controller.php';
 // echo '</pre>';
 
 ?>
-<div class="aviso_inicial row">
-    <div class="col-lg-6 col-xl-6 col-xxl-6 ">
-        <!-- <img src="assets/images/banner.png" alt=""> -->
-    </div>
+<!-- <div class="aviso_inicial row">
     <div class="col-lg-6 col-xl-6 col-xxl-6">
         <section class="text-end">
             <h4>Como posso lhe ajudar?</h4>
@@ -21,7 +18,7 @@ require_once 'controladores/Controller.php';
             </strong>
         </section>
     </div>
-</div>
+</div> -->
 
 <div class="container mt-5">
     <div class="row">

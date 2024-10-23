@@ -114,3 +114,34 @@ input[type=text], input[type=email], input[type=password]{
     border: 1px solid red;
 
 }
+
+footer {
+    background-color: #033c97;
+    /* background: linear-gradient(to top, #033c97 48%, #f6f8fa 100%); */
+    /* margin: 300px; */
+    color: var(--backpadrao);
+    text-decoration-color: var(--backpadrao);
+
+}
+footer .container {
+    padding: 100px;
+
+}
+
+footer ul {
+    list-style: none;
+    text-decoration: none;
+}
+footer a {
+    color: var(--backpadrao);
+}
+footer li {
+    padding: 10px;
+}
+footer li:hover {
+    background-color: #007bff; /* Cor de fundo ao passar o mouse */
+    color: #033c97; /* Cor do texto ao passar o mouse */
+    border-radius: 25px;
+    padding: 14px;
+
+}

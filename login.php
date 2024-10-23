@@ -31,6 +31,12 @@ if (!isset($csrf_token['csrf_token'])) {
                     </div></br>
                 <?php } ?>
 
+                <?php if (isset($_GET['status']) and $_GET['status'] === 'senha_invalida') { ?>
+                    <div class="p-3 bg-danger bg-opacity-10 border border-danger border-start-0 border-end-0 text-center">
+                        Login ou senha Inválida!
+                    </div></br>
+                <?php } ?>
+
 
                 <center>
                     <h3>Bem-Vindo</h3>
@@ -63,7 +69,7 @@ if (!isset($csrf_token['csrf_token'])) {
                     </div>
                 </form>
             </div>
-            <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mt-1 d-sm d-md login_1">
+            <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mt-1 d-none d-lg-block d-xl-block d-xxl-block login_1">
                 <div class="text-center">
                     <img src="assets/images/ouvidoria_web.png" alt="" width="400px">
                 </div>
@@ -76,4 +82,4 @@ if (!isset($csrf_token['csrf_token'])) {
 
 
 </section>
-<?php include_once 'controladores/Footer.php' ?>
+<?php include_once 'controladores/FooterLogin.php' ?>
