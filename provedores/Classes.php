@@ -89,6 +89,52 @@ class Usuario implements usuario_interface
     }
 }
 
+class TipoManifestacoes implements tipo_manifestacoes {
+    private int $id_tipo_manifestacao;
+    private $conexao;
+    private $tipo_manifestacao;
+
+    public function __construct()
+    {
+        $this->conexao = new Conexao;
+    }
+
+    public function chama_tipo_manifestacoes(){
+        $query = "SELECT * FROM tb_tipo_manifestacoes";
+
+        try{
+            $conn = $this->conexao->Conectar();
+            $stmt = $conn->prepare($query);
+
+            $r = [];
+            $stmt->execute();
+
+            return $r = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        } catch (PDOException $e){
+            throw new Exception('Erro ao chamar os tipos de manifestações: ' . $e->getMessage());
+        }
+    }
+
+    public function chama_manifestacao($id_nome_manifestacao){
+        $query = "SELECT * FROM tb_tipo_manifestacoes WHERE id_tipo_manifestacao = :id_nome_manifestacao";
+        try{
+            $conn = $this->conexao->Conectar();
+            $stmt = $conn->prepare($query);
+            $stmt->bindValue(':id_nome_manifestacao', $id_nome_manifestacao);
+
+            $r = [];
+            $stmt->execute();
+
+            return $r = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        } catch (PDOException $e){
+            throw new Exception('Erro ao chamar o tipo de manifestação: ' . $e->getMessage());
+        }
+
+    }
+}
+
 // Função para gerar um token aleatório
 function gerarTokenCSRF()
 {

@@ -128,6 +128,15 @@ function consulta_cpf() {
   }
 }
 
+function contador_caracteres(){
+    const campo = document.getElementById('conteudo_manifestacao')
+    const contador = document.getElementById('contador')
+
+    campo.addEventListener('input', () =>{
+      contador.textContent = campo.value.length
+    });
+}
+
 // function contarCaracteres() {
 //   let campo = document.getElementById('meuCampo');
 //   let contador = document.getElementById('contador');

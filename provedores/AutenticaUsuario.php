@@ -35,6 +35,8 @@ if (isset($_SERVER['REQUEST_METHOD']) && $_SERVER['REQUEST_METHOD'] === 'POST') 
 
                 $_SESSION = $consulta_usuario;
                 $_SESSION['csrf_token'] = $_POST['csrf_token'];
+                $_SESSION['id_entidade'] = $_POST['id'];
+                $_SESSION['entidade_nome'] = $_POST['entidade_nome'];
                 header("Location: ../dashboard.php");
 
             } else {

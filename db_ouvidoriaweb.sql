@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 16-Out-2024 às 20:52
+-- Tempo de geração: 25-Out-2024 às 16:52
 -- Versão do servidor: 10.4.32-MariaDB
 -- versão do PHP: 8.2.12
 
@@ -20,6 +20,39 @@ SET time_zone = "+00:00";
 --
 -- Banco de dados: `db_ouvidoriaweb`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `tb_manifestacoes`
+--
+
+CREATE TABLE `tb_manifestacoes` (
+  `id_manifestacao` int(11) NOT NULL,
+  `tipo_manifestacao` varchar(200) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `tb_tipo_manifestacoes`
+--
+
+CREATE TABLE `tb_tipo_manifestacoes` (
+  `id_tipo_manifestacao` int(11) NOT NULL,
+  `nome_tipo_manifestacao` varchar(200) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Extraindo dados da tabela `tb_tipo_manifestacoes`
+--
+
+INSERT INTO `tb_tipo_manifestacoes` (`id_tipo_manifestacao`, `nome_tipo_manifestacao`) VALUES
+(1, 'ELOGIO'),
+(2, 'OUVIDORIA'),
+(3, 'RECLAMAÇÃO'),
+(4, 'SOLICITAÇÃO'),
+(5, 'DENÚNCIA');
 
 -- --------------------------------------------------------
 
@@ -42,11 +75,24 @@ CREATE TABLE `tb_usuario` (
 --
 
 INSERT INTO `tb_usuario` (`id_usuario`, `nome_usuario`, `sobrenome_usuario`, `cpf_usuario`, `email_usuario`, `login_usuario`, `senha_usuario`) VALUES
-(2, 'Luan ', 'Leandro Nogueira', '117.698.684-88', 'luannogueira093@gmail.com', 'luanleandronogueira', '$2y$10$rnxG8EHQSpYDTqtz0jML6.exd/jaQjz/E84cZG2jd8YgU4m2/OFmK');
+(2, 'Luan ', 'Leandro Nogueira', '11769868488', 'luannogueira093@gmail.com', 'luanleandronogueira', '$2y$10$jzQSAyxizTuM/mrmo13xK.owpOmy4s9DAzCsWxVPcb6vA/0rHl/k6'),
+(3, 'Aylla De K&aacute;ssia', 'Alves Ferreira Leite', '08635248422', 'aylla@aylla.com', '', '$2y$10$jzQSAyxizTuM/mrmo13xK.owpOmy4s9DAzCsWxVPcb6vA/0rHl/k6');
 
 --
 -- Índices para tabelas despejadas
 --
+
+--
+-- Índices para tabela `tb_manifestacoes`
+--
+ALTER TABLE `tb_manifestacoes`
+  ADD PRIMARY KEY (`id_manifestacao`);
+
+--
+-- Índices para tabela `tb_tipo_manifestacoes`
+--
+ALTER TABLE `tb_tipo_manifestacoes`
+  ADD PRIMARY KEY (`id_tipo_manifestacao`);
 
 --
 -- Índices para tabela `tb_usuario`
@@ -59,10 +105,22 @@ ALTER TABLE `tb_usuario`
 --
 
 --
+-- AUTO_INCREMENT de tabela `tb_manifestacoes`
+--
+ALTER TABLE `tb_manifestacoes`
+  MODIFY `id_manifestacao` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT de tabela `tb_tipo_manifestacoes`
+--
+ALTER TABLE `tb_tipo_manifestacoes`
+  MODIFY `id_tipo_manifestacao` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
 -- AUTO_INCREMENT de tabela `tb_usuario`
 --
 ALTER TABLE `tb_usuario`
-  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -27,10 +27,10 @@
                         <div class="col-6 col-xl-6 col-lg-6">
                             <div class="cont_sessao2">
                                 <span class="spanPersonal">
-                                    <strong><a class="aPersonal" href="">Início</a></strong>
+                                    <strong><a class="aPersonal" href="dashboard.php">Início</a></strong>
                                 </span>
                                 <span class="spanPersonal">
-                                    <strong><a class="aPersonal" href="">Registrar Manifestação</a></strong>
+                                    <strong><a class="aPersonal" href="dashboard.php#main">Registrar Manifestação</a></strong>
                                 </span>
                                 <span class="spanPersonal">
                                     <strong><a class="aPersonal" href="">Perguntas Frequentes</a></strong>

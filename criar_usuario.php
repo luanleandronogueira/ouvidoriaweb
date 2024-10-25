@@ -57,6 +57,7 @@ if (!isset($_SESSION['csrf_token'])) {
 
                     <div class="text-center mt-4">
                         <button class="btn btn-primary btn1" id="button_submit" disabled type="submit">Cadastrar</button>
+                        <a href="login.php" class="btn btn-secondary btn1" id="button_submit" disabled type="submit">Voltar</a>
                     </div>
                 </form>
             </div>
@@ -64,4 +65,4 @@ if (!isset($_SESSION['csrf_token'])) {
     </div>
 
 </section>
-<?php require_once 'controladores/Footer.php' ?>
+<?php require_once 'controladores/FooterLogin.php' ?>

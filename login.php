@@ -10,12 +10,13 @@ if (!isset($csrf_token['csrf_token'])) {
 
 //print_r($csrf_token);
 
+
 ?>
 <script>
         // Verifique se a página foi recarregada (atualizada)
         if (performance.navigation.type === 1) {
             // Redirecione para a URL desejada
-            window.location.href = 'login.php';
+            window.location.href = 'login.php?&&id=1&&entidade_nome=Prefeitura%20de%20Garanhuns';
         }
 </script>
 
@@ -54,6 +55,8 @@ if (!isset($csrf_token['csrf_token'])) {
                         
                         <!-- Token de verificação -->
                         <input type="hidden" name="csrf_token" id="csrf_token" value="<?=$csrf_token['csrf_token']?>">
+                        <input type="hidden" name="id" value="<?=$_GET['id']?>">
+                        <input type="hidden" name="entidade_nome" value="<?=$_GET['entidade_nome']?>">
 
                         <div class="text-center">
                             <a href="recuperar_senha.php">Esqueci à Senha</a> | <a href="criar_usuario.php">Criar um Usuário</a>

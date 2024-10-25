@@ -8,4 +8,8 @@ interface usuario_interface {
 
 }
 
+interface tipo_manifestacoes {
+    public function chama_tipo_manifestacoes();
+}
+
 ?>
