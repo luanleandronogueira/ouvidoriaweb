@@ -24,7 +24,7 @@ $t_manifestacao = $tipo_manifestacao->chama_manifestacao($_GET['id_manifestacao'
 </div>
 
 <div class="container">
-    <form action="revisar_dados.php" method="post">
+    <form action="revisar_dados.php" method="post" enctype="multipart/form-data">
         <div class="row">
             <div class="mt-3">
                 <h5>Destino</h5>
@@ -67,10 +67,10 @@ $t_manifestacao = $tipo_manifestacao->chama_manifestacao($_GET['id_manifestacao'
             <div class="col-lg-12 col-xxl-12 col-xl-12 col-md-12 col-sm-12 mb-4">
                 <label for="observacoes_manifestacao">Mais Observações</label>
                 <textarea maxlength="8000" name="observacoes_manifestacao" class="form-control" rows="9" id="observacoes_manifestacao"></textarea>
-            </div>  
-            
-            <input type="hidden" name="id_entidade" value="<?=$_SESSION['id_entidade']?>">
-            <input type="hidden" name="csrf_token" value="<?=$_SESSION['csrf_token']?>">
+            </div>
+
+            <input type="hidden" name="id_entidade" value="<?= $_SESSION['id_entidade'] ?>">
+            <input type="hidden" name="csrf_token" value="<?= $_SESSION['csrf_token'] ?>">
 
             <hr>
             <div class="text-center">
