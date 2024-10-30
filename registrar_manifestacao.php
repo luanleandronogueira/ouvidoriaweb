@@ -23,6 +23,12 @@ $t_manifestacao = $tipo_manifestacao->chama_manifestacao($_GET['id_manifestacao'
     </div>
 </div>
 
+<?php if (isset($_GET['arquivo']) and $_GET['arquivo'] === 'n_permitido') { ?>
+        <div class="p-3 bg-danger bg-opacity-10 border border-danger border-start-0 border-end-0 text-center">
+                tipo de arquivo não permitido! Aceitos somente '.pdf', '.doc', '.docx', '.jpeg', '.jpg', '.png'
+        </div></br>
+<?php } ?>
+
 <div class="container">
     <form action="revisar_dados.php" method="post" enctype="multipart/form-data">
         <div class="row">
@@ -54,7 +60,7 @@ $t_manifestacao = $tipo_manifestacao->chama_manifestacao($_GET['id_manifestacao'
             <div class="col-lg-12 col-xxl-12 col-xl-12 col-md-12 col-sm-12 mb-4">
                 <label for="arquivo_manifestacao">Arquivos para envio</label>
                 <input type="file" name="arquivo_manifestacao" id="arquivo_manifestacao" class="form-control">
-                <small>São aceitos documentos de texto (.pdf, .doc, .docx, .txt), imagens (.jpeg, .jpg, .png, .bmp), planilhas (.xls, .xlsx)</small>
+                <small>São aceitos documentos de texto (.pdf, .doc, .docx), imagens (.jpeg, .jpg, .png), planilhas (.xls, .xlsx)</small>
             </div>
             <h5>Local dos Fato? </h5>
             <hr>

@@ -6,12 +6,10 @@ print_r($_POST);
 
 
 echo '</pre>';
-
-$arquivo = $_FILES['arquivo_manifestacao'];
-
+$aquivo = json_decode($_POST['arquivo_manifestacao']);
 echo '<pre>';
-
-// print_r($arquivo);
-
+print_r($aquivo);
 
 echo '</pre>';
+$caminho = '../assets/comprovantes/';
+move_uploaded_file($aquivo->arquivo_manifestacao->tmp_name, $caminho);
