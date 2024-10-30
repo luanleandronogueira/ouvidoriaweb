@@ -8,7 +8,7 @@ $tipo_manifestacao = new TipoManifestacoes;
 $t_manifestacao = $tipo_manifestacao->chama_manifestacao($_GET['id_manifestacao']);
 
 // echo '<pre>';
-//     print_r($_SESSION);
+//     print_r($t_manifestacao);
 // echo '</pre>';
 
 ?>
@@ -32,7 +32,7 @@ $t_manifestacao = $tipo_manifestacao->chama_manifestacao($_GET['id_manifestacao'
             </div>
             <div class="col-lg-4 col-xxl-4 col-xl-4 col-md-12 col-sm-12 ">
                 <label for="nome_entidade_manifestacao">Tipo de Manifestação:</label>
-                <input type="text" required readonly class="form-control" name="nome_entidade_manifestacao" id="nome_entidade_manifestacao" value="<?= $t_manifestacao['nome_tipo_manifestacao'] ?>">
+                <input type="text" required readonly class="form-control" name="tipo_manifestacao" id="tipo_manifestacao" value="<?= $t_manifestacao['nome_tipo_manifestacao'] ?>">
             </div>
             <div class="col-lg-8 col-xxl-8 col-xl-8 col-md-12 col-sm-12 mb-4">
                 <label for="entidade_manifestacao">Entidade de Destino:</label>
@@ -41,8 +41,8 @@ $t_manifestacao = $tipo_manifestacao->chama_manifestacao($_GET['id_manifestacao'
             <h5>Descrição da Manifestação</h5>
             <hr>
             <div class="col-lg-12 col-xxl-12 col-xl-12 col-md-12 col-sm-12 mb-4">
-                <label for="nome_entidade_manifestacao">Qual o motivo da sua manifestação:</label>
-                <input type="text" maxlength="60" name="nome_entidade_manifestacao" id="nome_entidade_manifestacao" required class="form-control">
+                <label for="motivo_manifestacao">Qual o motivo da sua manifestação:</label>
+                <input type="text" maxlength="60" name="motivo_manifestacao" id="motivo_manifestacao" required class="form-control">
             </div>
 
             <div class="col-lg-12 col-xxl-12 col-xl-12 col-md-12 col-sm-12 mb-4">
@@ -71,6 +71,7 @@ $t_manifestacao = $tipo_manifestacao->chama_manifestacao($_GET['id_manifestacao'
 
             <input type="hidden" name="id_entidade" value="<?= $_SESSION['id_entidade'] ?>">
             <input type="hidden" name="csrf_token" value="<?= $_SESSION['csrf_token'] ?>">
+            <input type="hidden" name="id_tipo_manifestacao" value="<?= $t_manifestacao['id_tipo_manifestacao'] ?>">
 
             <hr>
             <div class="text-center">
