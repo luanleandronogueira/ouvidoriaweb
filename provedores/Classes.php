@@ -1,4 +1,5 @@
 <?php
+date_default_timezone_set('America/Sao_Paulo');
 require_once 'Conexao.php';
 require_once 'Interfaces.php';
 
@@ -134,6 +135,91 @@ class TipoManifestacoes implements tipo_manifestacoes {
 
     }
 }
+
+class Manifestacoes implements interface_manifestacoes {
+
+    private int $id_manifestacao;
+    private $conexao;
+    private $motivo_manifestacao;
+    private $id_entidade_manifestacao;
+    private $id_tipo_manifestacao;
+    private $conteudo_manifestacao;
+    private $observacoes_manifestacao;
+    private $local_manifestacao;
+    private $id_usuario_manifestacao;
+
+    public function __construct()
+    {
+        $this->conexao = new Conexao;
+    }
+
+    public function inserir_manifestacao($motivo_manifestacao, $id_entidade_manifestacao, $id_tipo_manifestacao, $conteudo_manifestacao, $observacoes_manifestacao, $local_manifestacao, $id_usuario_manifestacao){
+
+        $query = "INSERT INTO tb_manifestacoes values (:motivo_manifestacao, :id_entidade_manifestacao, :id_tipo_manifestacao, :conteudo_manifestacao, :observacoes_manifestacao, :local_manifestacao, :id_usuario_manifestacao)";
+
+        try {
+            $conn = $this->conexao->Conectar();
+            $stmt = $conn->prepare($query);
+            $stmt->bindValue($motivo_manifestacao, ':motivo_manifestacao');
+            $stmt->bindValue($id_entidade_manifestacao,':id_entidade_manifestacao');
+            $stmt->bindValue($id_tipo_manifestacao,':id_tipo_manifestacao');
+            $stmt->bindValue($conteudo_manifestacao, ':conteudo_manifestacao');
+            $stmt->bindValue($observacoes_manifestacao, ':observacoes_manifestacao');
+            $stmt->bindValue($local_manifestacao, ':local_manifestacao');
+            $stmt->bindValue($id_usuario_manifestacao, ':id_usuario_manifestacao');
+
+            $stmt->execute();
+
+        } catch (PDOException $e) {
+            throw new Exception('Erro ao inserir o tipo de manifestação: ' . $e->getMessage());
+        }
+
+    }
+
+}
+
+class Entidades implements interface_entidades{
+
+    private int $id_entidade;
+    private $conexao;
+    private $nome_entidade;
+    private $email_entidade;
+    private $telefone_entidade;
+
+    public function __construct()
+    {
+        $this->conexao = new Conexao;
+    }
+
+    public function chama_email_entidade($id_entidade){
+        $query = "SELECT email_entidade FROM tb_entidades WHERE id_entidade = :id_entidade";
+
+        try{
+            $conn = $this->conexao->Conectar();
+            $stmt = $conn->prepare($query);
+            $stmt->bindValue(':id_entidade', $id_entidade);
+
+            $r = [];
+            $stmt->execute();
+
+            return $r = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        } catch (PDOException $e){
+            throw new Exception('Erro ao chamar o e-mail da entidade: ' . $e->getMessage());
+        }
+    }
+
+
+
+}
+
+
+
+
+
+
+
+
 
 // Função para gerar um token aleatório
 function gerarTokenCSRF()
