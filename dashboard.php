@@ -8,7 +8,7 @@ $tipo_manifestacao = new TipoManifestacoes;
 $t_manifestacao = $tipo_manifestacao->chama_tipo_manifestacoes();
 
 // echo '<pre>';
-//     print_r($t_manifestacao);
+//     print_r($_SESSION);
 // echo '</pre>';
 
 ?>

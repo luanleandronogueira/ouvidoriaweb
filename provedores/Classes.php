@@ -146,34 +146,38 @@ class Manifestacoes implements interface_manifestacoes {
     private $conteudo_manifestacao;
     private $observacoes_manifestacao;
     private $local_manifestacao;
+    private $arquivo_manifestacao;
     private $id_usuario_manifestacao;
+    private $status_manifestacao;
 
     public function __construct()
     {
         $this->conexao = new Conexao;
     }
 
-    public function inserir_manifestacao($motivo_manifestacao, $id_entidade_manifestacao, $id_tipo_manifestacao, $conteudo_manifestacao, $observacoes_manifestacao, $local_manifestacao, $id_usuario_manifestacao){
+    public function inserir_manifestacao($motivo_manifestacao, $id_entidade_manifestacao, $id_tipo_manifestacao, $conteudo_manifestacao, $observacoes_manifestacao, $local_manifestacao, $arquivo_manifestacao, $id_usuario_manifestacao, $status_manifestacao){
 
-        $query = "INSERT INTO tb_manifestacoes values (:motivo_manifestacao, :id_entidade_manifestacao, :id_tipo_manifestacao, :conteudo_manifestacao, :observacoes_manifestacao, :local_manifestacao, :id_usuario_manifestacao)";
-
+        $query = "INSERT INTO tb_manifestacoes (motivo_manifestacao, id_entidade_manifestacao, id_tipo_manifestacao, conteudo_manifestacao, observacoes_manifestacao, local_manifestacao, arquivo_manifestacao, id_usuario_manifestacao, status_manifestacao) values (:motivo_manifestacao, :id_entidade_manifestacao, :id_tipo_manifestacao, :conteudo_manifestacao, :observacoes_manifestacao, :local_manifestacao, :arquivo_manifestacao, :id_usuario_manifestacao, :status_manifestacao)";
+    
         try {
             $conn = $this->conexao->Conectar();
             $stmt = $conn->prepare($query);
-            $stmt->bindValue($motivo_manifestacao, ':motivo_manifestacao');
-            $stmt->bindValue($id_entidade_manifestacao,':id_entidade_manifestacao');
-            $stmt->bindValue($id_tipo_manifestacao,':id_tipo_manifestacao');
-            $stmt->bindValue($conteudo_manifestacao, ':conteudo_manifestacao');
-            $stmt->bindValue($observacoes_manifestacao, ':observacoes_manifestacao');
-            $stmt->bindValue($local_manifestacao, ':local_manifestacao');
-            $stmt->bindValue($id_usuario_manifestacao, ':id_usuario_manifestacao');
-
+            $stmt->bindValue(':motivo_manifestacao', $motivo_manifestacao);
+            $stmt->bindValue(':id_entidade_manifestacao', $id_entidade_manifestacao);
+            $stmt->bindValue(':id_tipo_manifestacao', $id_tipo_manifestacao);
+            $stmt->bindValue(':conteudo_manifestacao', $conteudo_manifestacao);
+            $stmt->bindValue(':observacoes_manifestacao', $observacoes_manifestacao);
+            $stmt->bindValue(':local_manifestacao', $local_manifestacao);
+            $stmt->bindValue(':arquivo_manifestacao', $arquivo_manifestacao);
+            $stmt->bindValue(':id_usuario_manifestacao', $id_usuario_manifestacao);
+            $stmt->bindValue(':status_manifestacao', $status_manifestacao);
+    
             $stmt->execute();
-
+    
         } catch (PDOException $e) {
             throw new Exception('Erro ao inserir o tipo de manifestação: ' . $e->getMessage());
         }
-
+    
     }
 
 }
@@ -206,6 +210,41 @@ class Entidades implements interface_entidades{
 
         } catch (PDOException $e){
             throw new Exception('Erro ao chamar o e-mail da entidade: ' . $e->getMessage());
+        }
+    }
+
+    public function chama_entidades(){
+        $query = "SELECT * FROM tb_entidades";
+
+        try{
+            $conn = $this->conexao->Conectar();
+            $stmt = $conn->prepare($query);
+
+            $r = [];
+            $stmt->execute();
+
+            return $r = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        } catch (PDOException $e){
+            throw new Exception('Erro ao chamar o e-mail da entidade: ' . $e->getMessage());
+        }
+    }
+
+    public function chama_entidade($id_entidade){
+        $query = "SELECT id_entidade, nome_entidade FROM tb_entidades WHERE id_entidade = :id_entidade";
+
+        try{
+            $conn = $this->conexao->Conectar();
+            $stmt = $conn->prepare($query);
+            $stmt->bindValue(':id_entidade', $id_entidade);
+
+            $r = [];
+            $stmt->execute();
+
+            return $r = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        } catch (PDOException $e){
+            throw new Exception('Erro ao chamar a entidade da entidade: ' . $e->getMessage());
         }
     }
 

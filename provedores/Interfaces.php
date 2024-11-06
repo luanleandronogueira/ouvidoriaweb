@@ -12,10 +12,12 @@ interface tipo_manifestacoes {
 }
 
 interface interface_manifestacoes {
-    public function inserir_manifestacao($motivo_manifestacao, $id_entidade_manifestacao, $id_tipo_manifestacao, $conteudo_manifestacao, $observacoes_manifestacao, $local_manifestacao, $id_usuario_manifestacao);
+    public function inserir_manifestacao($motivo_manifestacao, $id_entidade_manifestacao, $id_tipo_manifestacao, $conteudo_manifestacao, $observacoes_manifestacao, $local_manifestacao, $arquivo_manifestacao, $id_usuario_manifestacao, $status_manifestacao);
 }
 
 interface interface_entidades {
     public function chama_email_entidade($id_entidade);
+    public function chama_entidades();
+    public function chama_entidade($id_entidade);
 }
 ?>

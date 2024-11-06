@@ -71,6 +71,7 @@ if($_FILES['arquivo_manifestacao']['error'] != 4 AND $_FILES['arquivo_manifestac
                     <?php } else { ?>
 
                         <span>Sem anexos</span>
+                        <?php $caminho = 'Sem anexos'; ?>
 
                     <?php } ?>
                     

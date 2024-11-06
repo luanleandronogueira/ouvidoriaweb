@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 25-Out-2024 às 16:52
+-- Tempo de geração: 06-Nov-2024 às 18:50
 -- Versão do servidor: 10.4.32-MariaDB
 -- versão do PHP: 8.2.12
 
@@ -24,13 +24,52 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Estrutura da tabela `tb_entidades`
+--
+
+CREATE TABLE `tb_entidades` (
+  `id_entidade` int(11) NOT NULL,
+  `nome_entidade` varchar(200) NOT NULL,
+  `email_entidade` varchar(200) NOT NULL,
+  `telefone_entidade` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Extraindo dados da tabela `tb_entidades`
+--
+
+INSERT INTO `tb_entidades` (`id_entidade`, `nome_entidade`, `email_entidade`, `telefone_entidade`) VALUES
+(1, 'Prefeitura de Garanhuns', 'ouvidoria_@garanhuns.pe.gov.br', ''),
+(2, 'Prefeitura de Palmeirina', 'ouvidoria_@palmeirina.pe.gov.br', ''),
+(3, 'Câmara Municipal de Garanhuns', 'ouvidoria_@garanhuns.pe.leg.br', '');
+
+-- --------------------------------------------------------
+
+--
 -- Estrutura da tabela `tb_manifestacoes`
 --
 
 CREATE TABLE `tb_manifestacoes` (
   `id_manifestacao` int(11) NOT NULL,
-  `tipo_manifestacao` varchar(200) NOT NULL
+  `motivo_manifestacao` varchar(100) NOT NULL,
+  `id_entidade_manifestacao` int(11) NOT NULL,
+  `id_tipo_manifestacao` int(11) NOT NULL,
+  `conteudo_manifestacao` text NOT NULL,
+  `observacoes_manifestacao` text NOT NULL,
+  `local_manifestacao` varchar(200) NOT NULL,
+  `arquivo_manifestacao` varchar(200) NOT NULL,
+  `id_usuario_manifestacao` int(11) NOT NULL,
+  `status_manifestacao` varchar(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Extraindo dados da tabela `tb_manifestacoes`
+--
+
+INSERT INTO `tb_manifestacoes` (`id_manifestacao`, `motivo_manifestacao`, `id_entidade_manifestacao`, `id_tipo_manifestacao`, `conteudo_manifestacao`, `observacoes_manifestacao`, `local_manifestacao`, `arquivo_manifestacao`, `id_usuario_manifestacao`, `status_manifestacao`) VALUES
+(6, 'Falta de transparencia', 1, 1, 'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using &#039;Content here, content here&#039;, making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for &#039;lorem ipsum&#039; will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).', 'observacoes_manifestacao', '$caminho', 'Sem anexos', 2, ''),
+(7, 'Falta de transparencia', 1, 1, 'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using &#039;Content here, content here&#039;, making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for &#039;lorem ipsum&#039; will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).', 'Fatal error: Uncaught Exception: Erro ao inserir o tipo de manifesta&ccedil;&atilde;o: SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens in C:\\xampp\\htdocs\\ouvidoriaweb\\provedores\\Classes.php:176 Stack trace: #0 C:\\xampp\\htdocs\\ouvidoriaweb\\provedores\\CadastraManifestacao.php(43): Manifestacoes-&gt;inserir_manifestacao(&#039;Falta de transp...&#039;, &#039;1&#039;, &#039;1&#039;, &#039;It is a long es...&#039;, &#039;observacoes_man...&#039;, &#039;$caminho&#039;, &#039;Sem anexos&#039;, &#039;2&#039;) #1 {main} thrown in C:\\xampp\\htdocs\\ouvidoriaweb\\provedores\\Classes.php on line 176', 'Portal da transpar&ecirc;ncia', 'assets/comprovantes/1-061124131114.jpeg', 2, ''),
+(8, 'Falta de transparencia', 1, 1, 'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using &#039;Content here, content here&#039;, making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for &#039;lorem ipsum&#039; will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).', 'Fatal error: Uncaught Exception: Erro ao inserir o tipo de manifesta&ccedil;&atilde;o: SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens in C:\\xampp\\htdocs\\ouvidoriaweb\\provedores\\Classes.php:176 Stack trace: #0 C:\\xampp\\htdocs\\ouvidoriaweb\\provedores\\CadastraManifestacao.php(43): Manifestacoes-&gt;inserir_manifestacao(&#039;Falta de transp...&#039;, &#039;1&#039;, &#039;1&#039;, &#039;It is a long es...&#039;, &#039;observacoes_man...&#039;, &#039;$caminho&#039;, &#039;Sem anexos&#039;, &#039;2&#039;) #1 {main} thrown in C:\\xampp\\htdocs\\ouvidoriaweb\\provedores\\Classes.php on line 176', 'Portal da transpar&ecirc;ncia', 'assets/comprovantes/1-061124131114.jpeg', 2, 'A');
 
 -- --------------------------------------------------------
 
@@ -83,6 +122,12 @@ INSERT INTO `tb_usuario` (`id_usuario`, `nome_usuario`, `sobrenome_usuario`, `cp
 --
 
 --
+-- Índices para tabela `tb_entidades`
+--
+ALTER TABLE `tb_entidades`
+  ADD PRIMARY KEY (`id_entidade`);
+
+--
 -- Índices para tabela `tb_manifestacoes`
 --
 ALTER TABLE `tb_manifestacoes`
@@ -105,10 +150,16 @@ ALTER TABLE `tb_usuario`
 --
 
 --
+-- AUTO_INCREMENT de tabela `tb_entidades`
+--
+ALTER TABLE `tb_entidades`
+  MODIFY `id_entidade` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
 -- AUTO_INCREMENT de tabela `tb_manifestacoes`
 --
 ALTER TABLE `tb_manifestacoes`
-  MODIFY `id_manifestacao` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_manifestacao` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT de tabela `tb_tipo_manifestacoes`
