@@ -23,7 +23,7 @@ if (isset($_SERVER['REQUEST_METHOD']) && $_SERVER['REQUEST_METHOD'] === 'POST') 
         
         // Validação básica
         if (empty($login_usuario) || empty($senha_usuario)) {
-            header("Location: ../login.php?status=nao_autorizado1");
+            header("Location: ../login.php?status=nao_autorizado1&&id=".urlencode($_SESSION['id_entidade']));
             die();
         }
 
@@ -40,27 +40,27 @@ if (isset($_SERVER['REQUEST_METHOD']) && $_SERVER['REQUEST_METHOD'] === 'POST') 
                 header("Location: ../dashboard.php");
 
             } else {
-
-                header("Location: ../login.php?status=senha_invalida&&AutenticaUsuario");
+                $id = $_POST['id'];
+                header("Location: ../login.php?status=senha_invalida&&AutenticaUsuario1&&id={$id}");
                 die();
             }
 
         } else {
-
-            header("Location: ../login.php?status=log_senha_invalida&&AutenticaUsuario");
+            $id = $_POST['id'];
+            header("Location: ../login.php?status=log_senha_invalida&&AutenticaUsuario2&&id={$id}");
             die();
         }
 
     } else {
 
-        header("Location: ../login.php?status=nao_autorizado1&&AutenticaUsuario");
+        header("Location: ../login.php?status=nao_autorizado1&&AutenticaUsuario&&id={$_POST['id']}");
         die();
 
     }
 
 } else {
 
-    header("Location: ../login.php?status=nao_autorizado2&&AutenticaUsuario");
+    header("Location: ../login.php?status=nao_autorizado2&&AutenticaUsuario&&id=&&id={$_POST['id']}");
     die();
 
 }

@@ -55,6 +55,8 @@ if (!isset($_SESSION['csrf_token'])) {
                     <!-- Token csrf -->
                     <input type="hidden" name="csrf_token" id="csrf_token" value="<?= $_SESSION['csrf_token']; ?>">
 
+                    <input type="hidden" name="id_entidade" id="id" value="<?= $_GET['id']; ?>">
+
                     <div class="text-center mt-4">
                         <button class="btn btn-primary btn1" id="button_submit" disabled type="submit">Cadastrar</button>
                         <a href="login.php" class="btn btn-secondary btn1" id="button_submit" disabled type="submit">Voltar</a>

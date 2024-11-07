@@ -12,7 +12,26 @@
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=communication" />
     <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/2.0.3/css/dataTables.dataTables.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+    <style>
+      /* Adicione um estilo específico para telas menores, como celulares */
+      @media (max-width: 767px) {
+        /* Seletor para a tabela que você deseja adicionar o scroll horizontal */
+        .sua-tabela {
+          /* Defina a largura máxima da tabela para ativar o scroll horizontal quando necessário */
+          max-width: 100%;
+          /* Adicione um scroll horizontal quando o conteúdo excede a largura da tabela */
+          overflow-x: auto;
+          display: block; /* Adicione display: block para forçar a barra de rolagem horizontal */
+        }
+        /* Opcional: Remova as bordas da tabela para um visual mais limpo */
+        .sua-tabela, .sua-tabela th, .sua-tabela td {
+          border: none;
+        }
+      }
+    </style>
 </head>
 
 <body>

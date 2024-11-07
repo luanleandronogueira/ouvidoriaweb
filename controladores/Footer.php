@@ -33,8 +33,10 @@
         </div>
     </div>
     <hr>
-    <div>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, eaque itaque? Tempore totam possimus veniam sapiente iure animi placeat repudiandae. Quis error alias minima. Amet unde sequi fuga! Illum, perspiciatis.
+    <div class="text-center">
+        <div class="subfooter">
+            &copy;<?= date('Y')?>  Desenvolvido por L3tecnologia 
+        </div> 
     </div>
 </footer>
 </main>
@@ -43,6 +45,40 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
 <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
+<script src="https://cdn.datatables.net/2.0.3/js/dataTables.js"></script>
+<script>
+        $(document).ready(function() {
+            $('#myTable').DataTable({
+                "order": [
+                    [0, "desc"]
+                ],
+                "language": {
+                    "decimal": "",
+                    "emptyTable": "Nenhum dado disponível na tabela",
+                    "info": "Mostrando _START_ a _END_ de _TOTAL_ entradas",
+                    "infoEmpty": "Mostrando 0 a 0 de 0 entradas",
+                    "infoFiltered": "(filtrado de _MAX_ entradas totais)",
+                    "infoPostFix": "",
+                    "thousands": ".",
+                    "lengthMenu": "Mostrar _MENU_ entradas",
+                    "loadingRecords": "Carregando...",
+                    "processing": "Processando...",
+                    "search": "Pesquisar:",
+                    "zeroRecords": "Nenhum registro encontrado",
+                    "paginate": {
+                        "first": "Primeiro",
+                        "last": "Último",
+                        "next": "Próximo",
+                        "previous": "Anterior"
+                    },
+                    "aria": {
+                        "sortAscending": ": ativar para ordenar a coluna em ordem crescente",
+                        "sortDescending": ": ativar para ordenar a coluna em ordem decrescente"
+                    }
+                }
+            });
+        });
+</script>
 <script>
     $(document).ready(function() {
         $('.date').mask('00/00/0000');

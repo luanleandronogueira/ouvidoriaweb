@@ -62,7 +62,7 @@ $t_manifestacao = $tipo_manifestacao->chama_manifestacao($_GET['id_manifestacao'
                 <input type="file" name="arquivo_manifestacao" id="arquivo_manifestacao" class="form-control">
                 <small>São aceitos documentos de texto (.pdf), imagens (.jpeg, .jpg, .png)</small>
             </div>
-            <h5>Local dos Fato? </h5>
+            <h5>Local dos Fatos? </h5>
             <hr>
 
             <div class="col-lg-12 col-xxl-12 col-xl-12 col-md-12 col-sm-12 mb-4">

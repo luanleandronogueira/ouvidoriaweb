@@ -149,15 +149,17 @@ class Manifestacoes implements interface_manifestacoes {
     private $arquivo_manifestacao;
     private $id_usuario_manifestacao;
     private $status_manifestacao;
+    private $data_manifestacao;
+    private $protocolo_manifestacao;
 
     public function __construct()
     {
         $this->conexao = new Conexao;
     }
 
-    public function inserir_manifestacao($motivo_manifestacao, $id_entidade_manifestacao, $id_tipo_manifestacao, $conteudo_manifestacao, $observacoes_manifestacao, $local_manifestacao, $arquivo_manifestacao, $id_usuario_manifestacao, $status_manifestacao){
+    public function inserir_manifestacao($motivo_manifestacao, $id_entidade_manifestacao, $id_tipo_manifestacao, $conteudo_manifestacao, $observacoes_manifestacao, $local_manifestacao, $arquivo_manifestacao, $id_usuario_manifestacao, $status_manifestacao, $data_manifestacao, $protocolo_manifestacao){
 
-        $query = "INSERT INTO tb_manifestacoes (motivo_manifestacao, id_entidade_manifestacao, id_tipo_manifestacao, conteudo_manifestacao, observacoes_manifestacao, local_manifestacao, arquivo_manifestacao, id_usuario_manifestacao, status_manifestacao) values (:motivo_manifestacao, :id_entidade_manifestacao, :id_tipo_manifestacao, :conteudo_manifestacao, :observacoes_manifestacao, :local_manifestacao, :arquivo_manifestacao, :id_usuario_manifestacao, :status_manifestacao)";
+        $query = "INSERT INTO tb_manifestacoes (motivo_manifestacao, id_entidade_manifestacao, id_tipo_manifestacao, conteudo_manifestacao, observacoes_manifestacao, local_manifestacao, arquivo_manifestacao, id_usuario_manifestacao, status_manifestacao, data_manifestacao, protocolo_manifestacao) values (:motivo_manifestacao, :id_entidade_manifestacao, :id_tipo_manifestacao, :conteudo_manifestacao, :observacoes_manifestacao, :local_manifestacao, :arquivo_manifestacao, :id_usuario_manifestacao, :status_manifestacao, :data_manifestacao, :protocolo_manifestacao)";
     
         try {
             $conn = $this->conexao->Conectar();
@@ -171,6 +173,8 @@ class Manifestacoes implements interface_manifestacoes {
             $stmt->bindValue(':arquivo_manifestacao', $arquivo_manifestacao);
             $stmt->bindValue(':id_usuario_manifestacao', $id_usuario_manifestacao);
             $stmt->bindValue(':status_manifestacao', $status_manifestacao);
+            $stmt->bindValue(':data_manifestacao', $data_manifestacao);
+            $stmt->bindValue(':protocolo_manifestacao', $protocolo_manifestacao);
     
             $stmt->execute();
     
@@ -178,6 +182,57 @@ class Manifestacoes implements interface_manifestacoes {
             throw new Exception('Erro ao inserir o tipo de manifestação: ' . $e->getMessage());
         }
     
+    }
+
+    public function chama_minhas_manifestacoes($id_usuario_manifestacao){
+
+        $query = "SELECT m.id_manifestacao, 
+                        m.protocolo_manifestacao, 
+                        m.motivo_manifestacao, 
+                        m.status_manifestacao, 
+                        e.nome_entidade 
+                FROM tb_manifestacoes m
+                JOIN tb_entidades e ON e.id_entidade = m.id_entidade_manifestacao
+                WHERE m.id_usuario_manifestacao = :id_usuario_manifestacao";
+
+        try {
+            $conn = $this->conexao->Conectar();
+            $stmt = $conn->prepare($query);
+
+            $stmt->bindValue(':id_usuario_manifestacao', $id_usuario_manifestacao);
+            $stmt->execute();
+
+            $r = [];
+
+            return $r = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        } catch (PDOException $e) {
+            // Tratar exceções
+            throw new Exception('Erro chamar as manifestações: ' . $e->getMessage());
+        }
+    }
+
+    public function chama_manifestacao($id_manifestacao){
+        $query = "SELECT m.* , tm.nome_tipo_manifestacao, e.nome_entidade
+                FROM tb_manifestacoes m
+                JOIN tb_entidades e ON e.id_entidade = m.id_entidade_manifestacao JOIN tb_tipo_manifestacoes tm ON m.id_tipo_manifestacao = tm.id_tipo_manifestacao 
+                WHERE m.id_manifestacao = :id_manifestacao";
+
+        try {
+            $conn = $this->conexao->Conectar();
+            $stmt = $conn->prepare($query);
+
+            $stmt->bindValue(':id_manifestacao', $id_manifestacao);
+            $stmt->execute();
+
+            $r = [];
+
+            return $r = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        } catch (PDOException $e) {
+            // Tratar exceções
+            throw new Exception('Erro chamar a manifestação: ' . $e->getMessage());
+        }
     }
 
 }

@@ -20,6 +20,8 @@ if(isset($_SERVER['REQUEST_METHOD']) && $_SERVER['REQUEST_METHOD'] === 'POST') {
         $observacoes_manifestacao = filter_var($_POST['observacoes_manifestacao'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
         $local_manifestacao = filter_var($_POST['local_manifestacao'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
         $id_usuario_manifestacao = filter_var($_SESSION['id_usuario'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+        $data_manifestacao = date('Y-m-d');
+        $protocolo_manifestacao = $id_entidade_manifestacao . '-' . $id_usuario_manifestacao . '-' . date('dmyHms');
 
         // se vazio, insere dados
         if(empty($observacoes_manifestacao)){
@@ -32,14 +34,14 @@ if(isset($_SERVER['REQUEST_METHOD']) && $_SERVER['REQUEST_METHOD'] === 'POST') {
         }
 
         // Insere no banco de dados a manifestacao
-        $manifestacoes->inserir_manifestacao($motivo_manifestacao, $id_entidade_manifestacao, $id_tipo_manifestacao, $conteudo_manifestacao, $observacoes_manifestacao, $local_manifestacao, $arquivo_manifestacao, $id_usuario_manifestacao, 'A');
+       $manifestacoes->inserir_manifestacao($motivo_manifestacao, $id_entidade_manifestacao, $id_tipo_manifestacao, $conteudo_manifestacao, $observacoes_manifestacao, $local_manifestacao, $arquivo_manifestacao, $id_usuario_manifestacao, 'A', $data_manifestacao, $protocolo_manifestacao);
 
         // Envia email para o orgão responsável
 
 
 
         // Redireciona para a página de manifestações listadas
-        header("Location: ../minhas_manifestacoes.php?status=sucesso");
+        header("Location: ../minhas_manifestacoes.php?status=sucesso&&protocolo={$protocolo_manifestacao}");
 
     } else {
         // Redireciona para a página de manifestações listadas

@@ -16,9 +16,7 @@ if (!empty($_GET)) {
 
 }
 
-// echo '<pre>';
-// print_r($_GET);
-// echo '</pre>';
+    
 
 ?>
 <script>
@@ -58,20 +56,20 @@ if (!empty($_GET)) {
                         <div>
                             <div class="mb-3 text-center">
                                 <label for="login_usuario" class="form-label"><strong>Insira seu E-mail ou CPF</strong></label>
-                                <input type="text" name="login_usuario" class="form-control text-center" id="login_usuario" placeholder="Exemplo: email@email.com ou 12345678900" aria-describedby="login_usuario">
+                                <input type="text" required name="login_usuario" class="form-control text-center" id="login_usuario" placeholder="Exemplo: email@email.com ou 12345678900" aria-describedby="login_usuario">
                             </div>
                             <div class="mb-3 text-center">
                                 <label for="senha_usuario" class="form-label"><strong>Senha:</strong></label>
-                                <input type="password" placeholder="Insira sua senha" name="senha_usuario" class="form-control text-center" id="senha_usuario">
+                                <input type="password" required placeholder="Insira sua senha" name="senha_usuario" class="form-control text-center" id="senha_usuario">
                             </div>
 
                             <!-- Token de verificação -->
                             <input type="hidden" name="csrf_token" id="csrf_token" value="<?= $csrf_token['csrf_token'] ?>">
-                            <input type="hidden" name="id" value="<?= $ent[0] ?>">
-                            <input type="hidden" name="entidade_nome" value="<?= $ent[1] ?>">
+                            <input type="hidden" name="id" value="<?= $ent['id_entidade'] ?>">
+                            <input type="hidden" name="entidade_nome" value="<?= $ent['nome_entidade'] ?>">
 
                             <div class="text-center">
-                                <a href="recuperar_senha.php">Esqueci à Senha</a> | <a href="criar_usuario.php">Criar um Usuário</a>
+                                <a href="recuperar_senha.php">Esqueci à Senha</a> | <a href="criar_usuario.php?id=<?=$ent['id_entidade']?>">Criar um Usuário</a>
                             </div>
                             <div class="text-center mt-3">
                                 <button type="submit" class="btn btn-primary justify-center">Entrar</button>
