@@ -88,6 +88,65 @@ class Usuario implements usuario_interface
             throw new Exception('Erro ao consultar CPF: ' . $e->getMessage());
         }
     }
+
+    public function chama_usuario_perfil($id_usuario){
+        $query = "SELECT * FROM tb_usuario WHERE id_usuario = :id_usuario LIMIT 1";
+
+        try {
+            $conn = $this->conexao->Conectar();
+            $stmt = $conn->prepare($query);
+
+            $stmt->bindValue(':id_usuario', $id_usuario);
+            $stmt->execute();
+
+            $r = [];
+
+            return $r = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        } catch (PDOException $e) {
+            // Tratar exceções
+            throw new Exception('Erro ao consultar CPF: ' . $e->getMessage());
+        }
+    }
+
+    public function conta_manifestacao_usuario($id_usuario){
+        $query = "SELECT * FROM tb_manifestacoes WHERE id_usuario_manifestacao = :id_usuario";
+
+        try {
+            $conn = $this->conexao->Conectar();
+            $stmt = $conn->prepare($query);
+
+            $stmt->bindValue(':id_usuario', $id_usuario);
+            $stmt->execute();
+
+            $r = [];
+
+            return $r = $stmt->rowCount();
+
+        } catch (PDOException $e) {
+            // Tratar exceções
+            throw new Exception('Erro ao consultar CPF: ' . $e->getMessage());
+        }
+    }
+
+    public function atualizar_usuario($id_usuario, $nome_usuario, $sobrenome_usuario, $email_usuario){
+        $query = "UPDATE tb_usuario SET nome_usuario = :nome_usuario, sobrenome_usuario = :sobrenome_usuario, email_usuario = :email_usuario WHERE id_usuario = :id_usuario";
+
+        try {
+            $conn = $this->conexao->Conectar();
+            $stmt = $conn->prepare($query);
+
+            $stmt->bindValue(':nome_usuario', $nome_usuario);
+            $stmt->bindValue(':sobrenome_usuario', $sobrenome_usuario);
+            $stmt->bindValue(':email_usuario', $email_usuario);
+            $stmt->bindValue(':id_usuario', $id_usuario);
+
+            $stmt->execute();
+        } catch (PDOException $e) {
+            // Tratar exceções
+            throw new Exception('Erro ao consultar CPF: ' . $e->getMessage());
+        }
+    }
 }
 
 class TipoManifestacoes implements tipo_manifestacoes {

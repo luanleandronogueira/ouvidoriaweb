@@ -4,6 +4,10 @@ require_once 'Classes.php';
 interface usuario_interface {
     public function inserir_usuario($nome_usuario, $sobrenome_usuario, $cpf_usuario, $email_usuario, $senha_usuario);
     public function consulta_cpf($cpf_usuario);
+    public function chama_usuario_perfil($id_usuario);
+    public function conta_manifestacao_usuario($id_usuario);
+    public function atualizar_usuario($id_usuario, $nome_usuario, $sobrenome_usuario, $email_usuario);
+
 }
 
 interface tipo_manifestacoes {

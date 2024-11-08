@@ -7,9 +7,9 @@
             <div class="col-3 col-lg-3 col-xl-3 col-xxl-3 col-sm-12 col-md-12 logo_footer">
                 <h5>Usuário</h5>
                 <ul>
-                    <li><a href="">Meu Perfil</a></li>
-                    <li><a href="">Minhas Solicitações</a></li>
-                    <li><a href="">Registrar uma Solicitação</a></li>
+                    <li><a href="perfil.php">Meu Perfil</a></li>
+                    <li><a href="minhas_manifestacoes.php">Minhas Solicitações</a></li>
+                    <li><a href="dashboard.php#main">Registrar uma Solicitação</a></li>
                 </ul>
             </div>
             <div class="col-lg-3 col-xl-3 col-xxl-3 col-sm-12 col-md-12 logo_footer">

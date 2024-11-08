@@ -59,7 +59,7 @@
                         <div class="col-3 col-xl-3 col-lg-3  text-end">
                             <div class="cont_sessao text-center" >
                                 <strong>Bem Vindo | <?= $_SESSION['nome_usuario'] ?></strong></br>
-                                <a href="">Ver Perfil</a> | <a href="sair.php">Sair </a>
+                                <a href="perfil.php">Ver Perfil</a> | <a href="sair.php">Sair </a>
                             </div>
                         </div>
                     </div>
