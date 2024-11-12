@@ -25,6 +25,9 @@ $t_manifestacao = $tipo_manifestacao->chama_tipo_manifestacoes();
 
 <div class="container mt-5">
     <div class="row">
+        <div class="d-lg-none d-xl-none d-xxl-none">
+            <h4>Bem vindo, <?= $_SESSION['nome_usuario']?></h4>
+        </div>
         <div class="col-lg-6 col-xl-6 col-xxl-6 col-sm-12 col-md-12 mt-3">
             <span class="span_texto">Ouvidoria</span>
             <hr>

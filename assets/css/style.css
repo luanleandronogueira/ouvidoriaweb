@@ -63,6 +63,18 @@ select {
     padding: 40px !important;
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
 }
+
+.nav_controller_mobile {
+    
+    background-color: #033c97 !important;
+    padding: 5px !important;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.navbar-toggler {
+    background-color: #f6f8fa !important;
+    
+}
 .cont_sessao {
     background-color: var(--white);
     padding: 15px;
