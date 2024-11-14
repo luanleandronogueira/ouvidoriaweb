@@ -69,7 +69,7 @@ if (!empty($_GET)) {
                             <input type="hidden" name="entidade_nome" value="<?= $ent['nome_entidade'] ?>">
 
                             <div class="text-center">
-                                <a href="recuperar_senha.php">Esqueci à Senha</a> | <a href="criar_usuario.php?id=<?=$ent['id_entidade']?>">Criar um Usuário</a>
+                                <a href="recuperar_senha.php?id=<?=$ent['id_entidade']?>">Esqueci à Senha</a> | <a href="criar_usuario.php?id=<?=$ent['id_entidade']?>">Criar um Usuário</a>
                             </div>
                             <div class="text-center mt-3">
                                 <button type="submit" class="btn btn-primary justify-center">Entrar</button>

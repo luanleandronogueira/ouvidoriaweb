@@ -61,6 +61,26 @@ class Usuario implements usuario_interface
         }
     }
 
+    public function email_usuario($email_usuario)
+    {
+
+        $query = "SELECT COUNT(*) AS total_registros FROM tb_usuario WHERE email_usuario = :email_usuario";
+
+        try {
+            $conn = $this->conexao->Conectar();
+            $stmt = $conn->prepare($query);
+
+            $stmt->bindValue(':email_usuario', $email_usuario);
+            $stmt->execute();
+
+            $r = $stmt->fetch(PDO::FETCH_ASSOC);
+            return $r['total_registros'];
+        } catch (PDOException $e) {
+            // Tratar exceções
+            throw new Exception('Erro ao consultar email: ' . $e->getMessage());
+        }
+    }
+
     public function consulta_usuario($login_usuario)
     {
 
