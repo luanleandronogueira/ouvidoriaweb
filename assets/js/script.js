@@ -144,14 +144,13 @@ function contador_caracteres(){
 // }
 
 function consulta_email(){
-
+  // document.getElementById('email_usuario').value.addEventListener('blur', consulta_email);
   const email_usuario = document.getElementById('email_usuario').value
   const email_usuario_input = document.getElementById('email_usuario')
   const btnCodigo = document.getElementById('btnCodigo')
   const email_invalido = document.getElementById('email_invalido')
 
   var API = 'provedores/ConsultaEmail.php?email_usuario=' + email_usuario
-
 
   fetch(API)
     .then((response) => {
@@ -192,27 +191,74 @@ function consulta_email(){
 }
 
 function salva_cookie(){
-
   const email_usuario = document.getElementById('email_usuario').value
-
   // função para salvar dados no Cookie
   const data = new Date;
-
   data.setTime(data.getTime() + (10 * 60 * 1000)) // 10 minutos em milissegundos
   const tempo_expiracao = "expires = "+ data.toUTCString();
-
   // definir um cookie
   document.cookie = "email_usuario=" + email_usuario + ";" + tempo_expiracao + "; path=/";
-
 }
 
-function ler_cookie(){
-    const email = document.cookie
-    // continuar criando a função
-    console.log(email)
+// function ler_cookie(){
+//     const email = document.cookie
+//     // continuar criando a função
+//     console.log(email)
 
+// }
+
+function insere_cookie(){
+    const cookies = document.cookie.split(';');
+    cookie_value = cookies[1].split('=') 
+    document.getElementById('email_usuario').value = cookie_value[1];
 }
 
 window.addEventListener('load', function(){
   ler_cookie();
 })
+
+function verifica_codigo(){
+  const codigo_recuperacao = document.getElementById('codigo_verificacao').value
+  console.log(codigo_recuperacao)
+
+  var API = 'provedores/ConsultaCodigoVerificacao.php?email_usuario=' + email_usuario + '&&codigo=' + codigo_recuperacao
+
+  fetch(API)
+    .then((response) => {
+      console.log('Response', response)
+      return response.json();
+      }).then((dados) => {
+        if (dados === 0) {
+          //remove efeitos positivos
+          btnCodigo.classList.add("d-none")
+          email_usuario_input.classList.remove("border-success")
+
+          // adiciona efeitos negativos
+          email_usuario_input.classList.add("border-danger");
+          email_invalido.classList.remove("d-none")
+        
+        } else if(dados === 1) {
+          //remove efeitos positivos
+          email_invalido.classList.add("d-none")
+          email_usuario_input.classList.remove("border-danger")
+
+          // adiciona efeitos negativos
+          btnCodigo.classList.remove("d-none")
+          email_usuario_input.classList.add("border-success");
+          
+        } else {
+          //remove efeitos positivos
+          btnCodigo.classList.add("d-none")
+          email_usuario_input.classList.remove("border-success")
+
+          // adiciona efeitos negativos
+          email_usuario_input.classList.add("border-danger");
+          email_invalido.classList.remove("d-none")
+
+        }
+      }).catch((error) => {
+        console.log(error);
+      });
+
+
+}

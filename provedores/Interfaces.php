@@ -7,7 +7,6 @@ interface usuario_interface {
     public function chama_usuario_perfil($id_usuario);
     public function conta_manifestacao_usuario($id_usuario);
     public function atualizar_usuario($id_usuario, $nome_usuario, $sobrenome_usuario, $email_usuario);
-
 }
 
 interface tipo_manifestacoes {
@@ -23,7 +22,11 @@ interface interface_manifestacoes {
 interface interface_entidades {
     public function chama_email_entidade($id_entidade);
     public function chama_entidades();
-    public function chama_entidade($id_entidade);
-    
+    public function chama_entidade($id_entidade); 
 }
+
+interface interface_codigo_recuperacao {
+    public function registra_codigo_recuperacao($codigo_codigo_recuperacao, $email_codigo_recuperacao, $data_codigo_recuperacao, $status_codigo_recuperacao);
+}
+
 ?>

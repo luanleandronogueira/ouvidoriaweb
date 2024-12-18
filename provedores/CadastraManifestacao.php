@@ -37,7 +37,7 @@ if(isset($_SERVER['REQUEST_METHOD']) && $_SERVER['REQUEST_METHOD'] === 'POST') {
        $manifestacoes->inserir_manifestacao($motivo_manifestacao, $id_entidade_manifestacao, $id_tipo_manifestacao, $conteudo_manifestacao, $observacoes_manifestacao, $local_manifestacao, $arquivo_manifestacao, $id_usuario_manifestacao, 'A', $data_manifestacao, $protocolo_manifestacao);
 
         // Envia email para o orgão responsável
-
+        
 
 
         // Redireciona para a página de manifestações listadas

@@ -381,17 +381,41 @@ class Entidades implements interface_entidades{
             throw new Exception('Erro ao chamar a entidade da entidade: ' . $e->getMessage());
         }
     }
+}
 
+class CodigoRecuperacao implements interface_codigo_recuperacao {
+    private int $id_codigo_recuperacao;
+    private $conexao;
+    private $codigo_codigo_recuperacao;
+    private $email_codigo_recuperacao;
+    private $data_codigo_recuperacao;
+    private $status_codigo_recuperacao;
+
+    public function __construct()
+    {
+        $this->conexao = new Conexao;
+    }
+
+    public function registra_codigo_recuperacao($codigo_codigo_recuperacao, $email_codigo_recuperacao, $data_codigo_recuperacao, $status_codigo_recuperacao){
+            $query = "INSERT INTO tb_codigo_recuperacao (codigo_codigo_recuperacao, email_codigo_recuperacao, data_codigo_recuperacao, status_codigo_recuperacao) VALUES (:codigo_codigo_recuperacao, :email_codigo_recuperacao, :data_codigo_recuperacao, :status_codigo_recuperacao)";
+
+            try {
+                $conn = $this->conexao->Conectar();
+                $stmt = $conn->prepare($query);
+                $stmt->bindValue(':codigo_codigo_recuperacao', $codigo_codigo_recuperacao);
+                $stmt->bindValue(':email_codigo_recuperacao', $email_codigo_recuperacao);
+                $stmt->bindValue(':data_codigo_recuperacao', $data_codigo_recuperacao);
+                $stmt->bindValue(':status_codigo_recuperacao', $status_codigo_recuperacao);
+        
+                $stmt->execute();
+        
+            } catch (PDOException $e) {
+                throw new Exception('Erro ao inserir o código de recuperação: ' . $e->getMessage());
+            }
+    }
 
 
 }
-
-
-
-
-
-
-
 
 
 // Função para gerar um token aleatório
