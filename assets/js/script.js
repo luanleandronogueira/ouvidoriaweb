@@ -200,17 +200,23 @@ function salva_cookie(){
   document.cookie = "email_usuario=" + email_usuario + ";" + tempo_expiracao + "; path=/";
 }
 
-// function ler_cookie(){
-//     const email = document.cookie
-//     // continuar criando a função
-//     console.log(email)
+function ler_cookie(){
+    const email = document.cookie
+    // continuar criando a função
+    console.log(email)
 
-// }
+}
 
 function insere_cookie(){
     const cookies = document.cookie.split(';');
     cookie_value = cookies[1].split('=') 
     document.getElementById('email_usuario').value = cookie_value[1];
+}
+
+function insere_cookie_email_recuperacao(){
+  const cookies = document.cookie.split(';');
+  cookie_value = cookies[1].split('=') 
+  document.getElementById('email_usuario').value = cookie_value[1];
 }
 
 window.addEventListener('load', function(){
@@ -219,46 +225,32 @@ window.addEventListener('load', function(){
 
 function verifica_codigo(){
   const codigo_recuperacao = document.getElementById('codigo_verificacao').value
-  console.log(codigo_recuperacao)
+  const email_usuario_value = email_usuario.value
+  const div_codigo = document.getElementById('div_codigo')
+  const div_recuperacao = document.getElementById('div_recuperacao')
 
-  var API = 'provedores/ConsultaCodigoVerificacao.php?email_usuario=' + email_usuario + '&&codigo=' + codigo_recuperacao
+  var API = 'provedores/ConsultaCodigoVerificacao.php?email_usuario=' + email_usuario_value + '&&codigo=' + codigo_recuperacao
 
   fetch(API)
     .then((response) => {
       console.log('Response', response)
       return response.json();
       }).then((dados) => {
-        if (dados === 0) {
+        if (dados == 'autorizado') {
           //remove efeitos positivos
-          btnCodigo.classList.add("d-none")
-          email_usuario_input.classList.remove("border-success")
-
-          // adiciona efeitos negativos
-          email_usuario_input.classList.add("border-danger");
-          email_invalido.classList.remove("d-none")
-        
-        } else if(dados === 1) {
-          //remove efeitos positivos
-          email_invalido.classList.add("d-none")
-          email_usuario_input.classList.remove("border-danger")
-
-          // adiciona efeitos negativos
-          btnCodigo.classList.remove("d-none")
-          email_usuario_input.classList.add("border-success");
-          
+          div_codigo.classList.add("d-none")
+          console.log(dados)
+          div_recuperacao.classList.remove('d-none')
+      
         } else {
           //remove efeitos positivos
-          btnCodigo.classList.add("d-none")
-          email_usuario_input.classList.remove("border-success")
-
-          // adiciona efeitos negativos
-          email_usuario_input.classList.add("border-danger");
-          email_invalido.classList.remove("d-none")
-
+          div_codigo.classList.remove("d-none")
+          //btnCodigo.classList.add("d-none")
+          console.log(dados)
+          div_recuperacao.classList.add('d-none')
+          console.log('sem resposta')
         }
       }).catch((error) => {
         console.log(error);
       });
-
-
 }

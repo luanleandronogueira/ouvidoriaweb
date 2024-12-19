@@ -21,9 +21,10 @@ if (isset($_SERVER['REQUEST_METHOD']) && $_SERVER['REQUEST_METHOD'] === 'POST') 
         // gera código de recuperação 5 dígitos aleatório
         $codigo_envio = rand(10000, 99999);
         $codigo_envio_hash = password_hash($codigo_envio, PASSWORD_DEFAULT);
+        $validador = substr($codigo_envio, -2);
         
         // banco de dados
-        $codigo_recuperacao->registra_codigo_recuperacao($codigo_envio_hash, $email_usuario, date("Y-m-d"), 'A');
+        $codigo_recuperacao->registra_codigo_recuperacao($codigo_envio_hash, $email_usuario, date("Y-m-d"), 'A', $validador);
         //Create an instance; passing `true` enables exceptions
         $mail = new PHPMailer(true);
         try {

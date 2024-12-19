@@ -2,7 +2,9 @@
 session_start();
 require_once 'provedores/Classes.php';
 include 'controladores/ControllerLogin.php';
-
+if (empty($_SESSION['csrf_token'])) {
+    $_SESSION['csrf_token'] = gerarTokenCSRF();
+}
 ?>
 
 <div class="mt-5 container">
@@ -28,6 +30,5 @@ include 'controladores/ControllerLogin.php';
     // ler_cookie();    
 </script>
 <script>
-    insere_cookie();
-    
+    insere_cookie(); 
 </script>

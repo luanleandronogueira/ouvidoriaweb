@@ -26,7 +26,9 @@ interface interface_entidades {
 }
 
 interface interface_codigo_recuperacao {
-    public function registra_codigo_recuperacao($codigo_codigo_recuperacao, $email_codigo_recuperacao, $data_codigo_recuperacao, $status_codigo_recuperacao);
+    public function registra_codigo_recuperacao($codigo_codigo_recuperacao, $email_codigo_recuperacao, $data_codigo_recuperacao, $status_codigo_recuperacao, $cod_validador_codigo_recuperacao);
+    public function consulta_codigo($email_codigo_recuperacao, $status_codigo_recuperacao, $data_codigo_recuperacao, $cod_validador_codigo_recuperacao);
+    public function atualiza_status($status_codigo_recuperacao, $id_codigo_recuperacao);
 }
 
 ?>

@@ -390,14 +390,15 @@ class CodigoRecuperacao implements interface_codigo_recuperacao {
     private $email_codigo_recuperacao;
     private $data_codigo_recuperacao;
     private $status_codigo_recuperacao;
+    private $cod_validador_codigo_recuperacao;
 
     public function __construct()
     {
         $this->conexao = new Conexao;
     }
 
-    public function registra_codigo_recuperacao($codigo_codigo_recuperacao, $email_codigo_recuperacao, $data_codigo_recuperacao, $status_codigo_recuperacao){
-            $query = "INSERT INTO tb_codigo_recuperacao (codigo_codigo_recuperacao, email_codigo_recuperacao, data_codigo_recuperacao, status_codigo_recuperacao) VALUES (:codigo_codigo_recuperacao, :email_codigo_recuperacao, :data_codigo_recuperacao, :status_codigo_recuperacao)";
+    public function registra_codigo_recuperacao($codigo_codigo_recuperacao, $email_codigo_recuperacao, $data_codigo_recuperacao, $status_codigo_recuperacao, $cod_validador_codigo_recuperacao){
+            $query = "INSERT INTO tb_codigo_recuperacao (codigo_codigo_recuperacao, email_codigo_recuperacao, data_codigo_recuperacao, status_codigo_recuperacao, cod_validador_codigo_recuperacao) VALUES (:codigo_codigo_recuperacao, :email_codigo_recuperacao, :data_codigo_recuperacao, :status_codigo_recuperacao, :cod_validador_codigo_recuperacao)";
 
             try {
                 $conn = $this->conexao->Conectar();
@@ -406,12 +407,38 @@ class CodigoRecuperacao implements interface_codigo_recuperacao {
                 $stmt->bindValue(':email_codigo_recuperacao', $email_codigo_recuperacao);
                 $stmt->bindValue(':data_codigo_recuperacao', $data_codigo_recuperacao);
                 $stmt->bindValue(':status_codigo_recuperacao', $status_codigo_recuperacao);
+                $stmt->bindValue(':cod_validador_codigo_recuperacao', $cod_validador_codigo_recuperacao);
         
                 $stmt->execute();
         
             } catch (PDOException $e) {
                 throw new Exception('Erro ao inserir o código de recuperação: ' . $e->getMessage());
             }
+    }
+
+    public function consulta_codigo($email_codigo_recuperacao, $status_codigo_recuperacao, $data_codigo_recuperacao, $cod_validador_codigo_recuperacao){
+        $query = "SELECT * FROM tb_codigo_recuperacao WHERE email_codigo_recuperacao = :email_codigo_recuperacao AND status_codigo_recuperacao = :status_codigo_recuperacao AND data_codigo_recuperacao = :data_codigo_recuperacao AND cod_validador_codigo_recuperacao = :cod_validador_codigo_recuperacao LIMIT 1";
+
+        try {
+            $conn = $this->conexao->Conectar();
+            $stmt = $conn->prepare($query);
+            $stmt->bindValue(':email_codigo_recuperacao', $email_codigo_recuperacao);
+            $stmt->bindValue(':status_codigo_recuperacao', $status_codigo_recuperacao);
+            $stmt->bindValue(':data_codigo_recuperacao', $data_codigo_recuperacao);
+            $stmt->bindValue(':cod_validador_codigo_recuperacao', $cod_validador_codigo_recuperacao);
+
+            $r = [];
+            $stmt->execute();
+            return $r = $stmt->fetch(PDO::FETCH_ASSOC);  
+
+        } catch (PDOException $e) {
+            throw new Exception('Erro ao inserir o código de recuperação: ' . $e->getMessage());
+        }
+
+    }
+
+    public function atualiza_status($status_codigo_recuperacao, $id_codigo_recuperacao){
+        $query = "UPDATE tb_codigo_recuperacao SET status_codigo_recuperacao = :status_codigo_recuperacao WHERE id_codigo_recuperacao = :id_codigo_recuperacao";
     }
 
 

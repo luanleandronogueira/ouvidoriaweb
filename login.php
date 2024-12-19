@@ -16,8 +16,6 @@ if (!empty($_GET)) {
 
 }
 
-    
-
 ?>
 <script>
     // Verifique se a página foi recarregada (atualizada)
