@@ -15,7 +15,7 @@
             <div class="col-lg-3 col-xl-3 col-xxl-3 col-sm-12 col-md-12 logo_footer">
                 <h5>Informações</h5>
                 <ul>
-                    <li><a href="">Perguntas Frequentes</a></li>
+                    <li><a href="faq.php">Perguntas Frequentes</a></li>
                     <li><a href="politica_privacidades.php">Políticas de Privacidade</a></li>
                     <li><a target="_blank" href="https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2018/lei/l13709.htm">Lei Geral de Proteção de Dados</a></li>
                     <li><a href="">Mapa do Site</a></li>
@@ -25,7 +25,6 @@
             <h5>Ajuda</h5>
                 <ul>
                     <li><a href="">Suporte</a></li>
-                    <li><a href="">Trabalhe Conosco</a></li>
                 </ul>
             </div>
         </div>

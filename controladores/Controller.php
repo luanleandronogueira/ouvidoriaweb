@@ -57,7 +57,7 @@
                                     <strong><a class="aPersonal" href="dashboard.php#main">Registrar Manifestação</a></strong>
                                 </span>
                                 <span class="spanPersonal">
-                                    <strong><a class="aPersonal" href="">Perguntas Frequentes</a></strong>
+                                    <strong><a class="aPersonal" href="faq.php">Perguntas Frequentes</a></strong>
                                 </span>
                             </div>
                         </div>
@@ -68,13 +68,9 @@
                             </div>
                         </div>
                     </div>
-
                 </div>
-
             </div>
-
         </nav>
-
 
         <nav class="nav_controller_mobile navbar navbar-expand-lg d-lg-none d-xl-none d-xxl-none">
             <div class="container-fluid">
@@ -88,11 +84,7 @@
 
                 </div>
             </div>
-
         </nav>
-
-
-
     </header>
     <main>
 

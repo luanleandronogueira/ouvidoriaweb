@@ -73,10 +73,10 @@ if (!empty($_GET)) {
                                 <button type="submit" class="btn btn-primary justify-center">Entrar</button>
                             </div>
                             <!-- <hr> -->
-                            <div class="text-center mt-3">
+                            <!-- <div class="text-center mt-3">
                                 <span>Entrar com à conta Google</span></br>
                                 <a href=""><img src="assets/images/google_img.png" width="75px" alt=""></a>
-                            </div>
+                            </div> -->
                         </div>
                     </form>
 
