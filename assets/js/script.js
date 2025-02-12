@@ -3,12 +3,8 @@
 function consulta_senhas() {
   const senha_usuario = document.getElementById("senha_usuario").value;
   const senha_usuario1 = document.getElementById("senha_usuario");
-  const confirmar_senha_usuario1 = document.getElementById(
-    "confirmar_senha_usuario"
-  );
-  const confirmar_senha_usuario = document.getElementById(
-    "confirmar_senha_usuario"
-  ).value;
+  const confirmar_senha_usuario1 = document.getElementById("confirmar_senha_usuario");
+  const confirmar_senha_usuario = document.getElementById( "confirmar_senha_usuario").value;
   const button_submit = document.getElementById("button_submit");
   const mensagem_senha = document.getElementById("mensagem_senha");
 
@@ -219,15 +215,34 @@ function insere_cookie_email_recuperacao(){
   document.getElementById('email_usuario').value = cookie_value[1];
 }
 
+function insere_cookie_email_recuperacao1(){
+  const cookies = document.cookie.split(';');
+  cookie_value = cookies[1].split('=') 
+  document.getElementById('email_usuario_1').value = cookie_value[1];
+}
+
 window.addEventListener('load', function(){
   ler_cookie();
 })
+
+function verifica_campo_codigo(){
+  const codigo_verificacao = document.getElementById('codigo_verificacao').value
+  const btn_codigo = document.getElementById('btn_codigo');
+  if(codigo_verificacao.length == 5){
+    btn_codigo.disabled = false
+  } else {
+    btn_codigo.disabled = true
+  } 
+}
 
 function verifica_codigo(){
   const codigo_recuperacao = document.getElementById('codigo_verificacao').value
   const email_usuario_value = email_usuario.value
   const div_codigo = document.getElementById('div_codigo')
   const div_recuperacao = document.getElementById('div_recuperacao')
+  const titulo1 = document.getElementById('titulo1')
+  const titulo2 = document.getElementById('titulo2') 
+  const mensagem = document.getElementById('mensagem')
 
   var API = 'provedores/ConsultaCodigoVerificacao.php?email_usuario=' + email_usuario_value + '&&codigo=' + codigo_recuperacao
 
@@ -239,18 +254,57 @@ function verifica_codigo(){
         if (dados == 'autorizado') {
           //remove efeitos positivos
           div_codigo.classList.add("d-none")
-          console.log(dados)
           div_recuperacao.classList.remove('d-none')
+          titulo1.classList.add('d-none')
+          titulo2.classList.remove('d-none')
       
+        } else if(dados == 'nao_autorizado') {
+            console.log(dados)
+            mensagem.textContent = 'Insira um código válido!'
         } else {
           //remove efeitos positivos
           div_codigo.classList.remove("d-none")
-          //btnCodigo.classList.add("d-none")
-          console.log(dados)
           div_recuperacao.classList.add('d-none')
-          console.log('sem resposta')
+          titulo1.classList.add('d-none')
+          titulo2.classList.remove('d-none')
         }
       }).catch((error) => {
         console.log(error);
       });
+}
+
+function confere_senhas(){
+  const senha_atualizada = document.getElementById('senha_atualizada').value
+  const senha_atualizada_confirmada = document.getElementById('senha_atualizada_confirmada').value
+  const btn_atualizar = document.getElementById('btn_atualizar')
+
+  const senha_atualizada2 = document.getElementById('senha_atualizada')
+  const senha_atualizada_confirmada2 = document.getElementById('senha_atualizada_confirmada')
+
+  if(btn_atualizar.hasAttribute('disabled')){
+    console.log(btn_atualizar)
+    btn_atualizar.disabled = false
+
+    if(senha_atualizada === senha_atualizada_confirmada){
+      // console.log('as senhas são iguais')
+      senha_atualizada2.classList.remove('border-danger')
+      senha_atualizada_confirmada2.classList.remove('border-danger')
+  
+      senha_atualizada2.classList.add('border-success')
+      senha_atualizada_confirmada2.classList.add('border-success')
+      btn_atualizar.disabled = false
+      
+    } else {
+      senha_atualizada2.classList.remove('border-success')
+      senha_atualizada_confirmada2.classList.remove('border-success')
+  
+      senha_atualizada2.classList.add('border-danger')
+      senha_atualizada_confirmada2.classList.add('border-danger')
+      btn_atualizar.disabled = true
+    }
+
+  } else {
+    console.log('Não tem o atributo');
+    btn_atualizar.disabled = true
+  }
 }

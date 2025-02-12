@@ -27,8 +27,5 @@ if (empty($_SESSION['csrf_token'])) {
 
 <?php include_once 'controladores/FooterLogin.php' ?>
 <script>
-    // ler_cookie();    
-</script>
-<script>
     insere_cookie(); 
 </script>

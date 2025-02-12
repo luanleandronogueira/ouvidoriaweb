@@ -167,6 +167,23 @@ class Usuario implements usuario_interface
             throw new Exception('Erro ao consultar CPF: ' . $e->getMessage());
         }
     }
+
+    public function atualizar_senha_usuario($senha_usuario, $email_usuario){
+        $query = "UPDATE tb_usuario SET senha_usuario = :senha_usuario WHERE email_usuario = :email_usuario";
+
+        try {
+            $conn = $this->conexao->Conectar();
+            $stmt = $conn->prepare($query);
+
+            $stmt->bindValue(':senha_usuario', $senha_usuario);
+            $stmt->bindValue(':email_usuario', $email_usuario);
+
+            $stmt->execute();
+        } catch (PDOException $e) {
+            // Tratar exceções
+            throw new Exception('Erro ao consultar CPF: ' . $e->getMessage());
+        }
+    }
 }
 
 class TipoManifestacoes implements tipo_manifestacoes {
@@ -439,6 +456,17 @@ class CodigoRecuperacao implements interface_codigo_recuperacao {
 
     public function atualiza_status($status_codigo_recuperacao, $id_codigo_recuperacao){
         $query = "UPDATE tb_codigo_recuperacao SET status_codigo_recuperacao = :status_codigo_recuperacao WHERE id_codigo_recuperacao = :id_codigo_recuperacao";
+
+        try{
+            $conn = $this->conexao->Conectar();
+            $stmt = $conn->prepare($query);
+            $stmt->bindValue(':status_codigo_recuperacao', $status_codigo_recuperacao);
+            $stmt->bindValue(':id_codigo_recuperacao', $id_codigo_recuperacao);
+
+            $stmt->execute();
+        } catch(PDOException $e){
+            throw new Exception('Erro ao inserir o código de recuperação: ' . $e->getMessage());
+        }
     }
 
 
