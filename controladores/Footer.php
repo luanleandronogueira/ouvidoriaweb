@@ -16,8 +16,8 @@
                 <h5>Informações</h5>
                 <ul>
                     <li><a href="">Perguntas Frequentes</a></li>
-                    <li><a href="">Políticas de Privacidade</a></li>
-                    <li><a href="">Lei Geral de Proteção de Dados</a></li>
+                    <li><a href="politica_privacidades.php">Políticas de Privacidade</a></li>
+                    <li><a target="_blank" href="https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2018/lei/l13709.htm">Lei Geral de Proteção de Dados</a></li>
                     <li><a href="">Mapa do Site</a></li>
                 </ul>
             </div>
@@ -26,8 +26,6 @@
                 <ul>
                     <li><a href="">Suporte</a></li>
                     <li><a href="">Trabalhe Conosco</a></li>
-                    <li><a href=""></a></li>
-                    <li><a href=""></a></li>
                 </ul>
             </div>
         </div>

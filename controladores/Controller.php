@@ -120,7 +120,7 @@
                         </ul>
                     </div>
                     </p>
-                    <p><a href="manifestacao.php">Registrar Manifestação</a></p>
+                    <p><a href="dashboard.php">Registrar Manifestação</a></p>
                     <p><a href="minhas_manifestacoes.php">Minhas Manifestações</a></p>
                     <p><a href="sair.php">Sair</a></p>
                 </ul>
