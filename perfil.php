@@ -28,7 +28,7 @@ $contagem_manifestacao = $usuario->conta_manifestacao_usuario($_SESSION['id_usua
                 <h5>Meu Perfil</h5>
                 <hr>
             </div>
-
+            
             <div class="col-xxl-3 col-xl-3 col-lg-3 col-md-12 col-sm-12">
                 <label for="nome_usuario">Nome:</label>
                 <input class="form-control" readonly type="text" value="<?= $dados['nome_usuario'] ?>" name="nome_usuario" id="nome_usuario">
