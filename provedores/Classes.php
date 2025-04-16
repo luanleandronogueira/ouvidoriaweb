@@ -129,6 +129,26 @@ class Usuario implements usuario_interface
         }
     }
 
+    public function chama_usuario_anonimo(){
+
+        $query = "SELECT * FROM tb_usuario WHERE cpf_usuario = 0 LIMIT 1";
+
+        try {
+            $conn = $this->conexao->Conectar();
+            $stmt = $conn->prepare($query);
+            
+            $stmt->execute();
+
+            $r = [];
+
+            return $r = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        } catch (PDOException $e) {
+            // Tratar exceções
+            throw new Exception('Erro ao consultar CPF: ' . $e->getMessage());
+        }
+    }
+
     public function conta_manifestacao_usuario($id_usuario){
         $query = "SELECT * FROM tb_manifestacoes WHERE id_usuario_manifestacao = :id_usuario";
 

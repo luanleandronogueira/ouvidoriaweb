@@ -8,6 +8,8 @@ $Manifestacoes = new Manifestacoes;
 $minha_manifetacao = $Manifestacoes->chama_manifestacao($_GET['id_manifestacao']);
 
 extract($minha_manifetacao);
+
+
 ?>
 <div class="container mt-4">
     <div class="row">

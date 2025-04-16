@@ -72,6 +72,13 @@ if (!empty($_GET)) {
                             <div class="text-center mt-3">
                                 <button type="submit" class="btn btn-primary justify-center">Entrar</button>
                             </div>
+                            <hr>
+                            <center>
+                                <h4>Realize sua Solicitação Anônima</h4>
+                            </center>
+                            <div class="text-center mt-3">
+                                <a href="denuncia_anonima.php?id=<?=$ent['id_entidade']?>&&id_manifestacao=5" class="btn btn-dark justify-center">Denúncia Anônima</a>
+                            </div>
                             <!-- <hr> -->
                             <!-- <div class="text-center mt-3">
                                 <span>Entrar com à conta Google</span></br>

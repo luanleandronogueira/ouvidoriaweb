@@ -7,6 +7,7 @@ interface usuario_interface {
     public function chama_usuario_perfil($id_usuario);
     public function conta_manifestacao_usuario($id_usuario);
     public function atualizar_usuario($id_usuario, $nome_usuario, $sobrenome_usuario, $email_usuario);
+    public function chama_usuario_anonimo();
 }
 
 interface tipo_manifestacoes {
