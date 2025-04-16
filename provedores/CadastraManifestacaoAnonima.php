@@ -9,7 +9,8 @@ require '../assets/lib/vendor/phpmailer/phpmailer/src/SMTP.php';
 require '../assets/lib/vendor/autoload.php';
 //verificaSessao();
 // verificarTokenCSRF();
-$id_usuario_anonimo = 4;
+$usuario_anonimo = new Usuario;
+$id_usuario_anonimo = $usuario_anonimo->chama_usuario_anonimo();
 $entidade = new Entidades;
 $manifestacoes = new Manifestacoes;
 $mail = new PHPMailer(true);
@@ -25,7 +26,7 @@ if(isset($_SERVER['REQUEST_METHOD']) && $_SERVER['REQUEST_METHOD'] === 'POST') {
         $conteudo_manifestacao = filter_var($_POST['conteudo_manifestacao'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
         $observacoes_manifestacao = filter_var($_POST['observacoes_manifestacao'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
         $local_manifestacao = filter_var($_POST['local_manifestacao'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-        $id_usuario_manifestacao = filter_var($id_usuario_anonimo, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+        $id_usuario_manifestacao = filter_var($id_usuario_anonimo['id_usuario'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
         $data_manifestacao = date('Y-m-d');
         $protocolo_manifestacao = $id_entidade_manifestacao . '-' . $id_usuario_manifestacao . '-' . date('dmyHms');
 
@@ -39,10 +40,6 @@ if(isset($_SERVER['REQUEST_METHOD']) && $_SERVER['REQUEST_METHOD'] === 'POST') {
         }
         // chama email da entidade
         $email_entidade = $entidade->chama_email_entidade($_SESSION['id_entidade']);
-
-        echo '<pre>';
-            print_r($_POST);
-        echo '</pre>';
 
         // Insere no banco de dados a manifestacao
        $manifestacoes->inserir_manifestacao($motivo_manifestacao, $id_entidade_manifestacao, $id_tipo_manifestacao, $conteudo_manifestacao, $observacoes_manifestacao, $local_manifestacao, $arquivo_manifestacao, $id_usuario_manifestacao, 'A', $data_manifestacao, $protocolo_manifestacao);
