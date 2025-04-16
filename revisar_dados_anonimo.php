@@ -100,8 +100,8 @@ if($_FILES['arquivo_manifestacao']['error'] != 4 AND $_FILES['arquivo_manifestac
                     <input type="hidden" name="local_manifestacao" value="<?=$_POST['local_manifestacao'] ?>">
             
                 <div class="text-center">
-                    <a class="btn btn-outline-primary btn1" href="dashboard.php">Voltar</a>
-                    <button type="submit" class="btn btn-primary btn1">Enviar Manifestação</button>
+                    <a class="btn btn-outline-dark btn1" href="dashboard.php">Voltar</a>
+                    <button type="submit" class="btn btn-dark btn1">Enviar Manifestação</button>
                 </div>
                 </form>
         </div>

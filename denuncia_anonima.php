@@ -17,7 +17,7 @@ $_SESSION['csrf_token'] = '';
 <div class="aviso_inicial row">
     <div class="col-lg-12 col-xl-12 col-xxl-12">
         <section class="text-start">
-            <h4>Aqui você consegue fazer sua denúncia Anônima</h4>
+            <h4>Aqui você consegue fazer sua denúncia anônima</h4>
             <strong>
                 <p>Os campos estão disponíveis para suas manifestações, não se preocupe não revelaremos sua identidade.</p>
             </strong>
@@ -83,8 +83,8 @@ $_SESSION['csrf_token'] = '';
 
             <hr>
             <div class="text-center">
-                <a class="btn btn-outline-primary btn1" href="dashboard.php">Voltar</a>
-                <button class="btn btn-primary btn1">Prosseguir</button>
+                <a class="btn btn-outline-dark btn1" href="login.php">Voltar</a>
+                <button class="btn btn-dark btn1">Prosseguir</button>
             </div>
     </form>
 </div>
