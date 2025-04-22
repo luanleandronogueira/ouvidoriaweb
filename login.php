@@ -122,16 +122,16 @@ if (!empty($_GET)) {
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <!-- Formulario de consulta a solicitação anonima -->
-                <form action="" method="get">
+                <form action="https://l3tecnologia.app.br/api_ouvidoria_web/public/api/v1/manifestacao_anonima" method="post">
                     <div class="modal-body">
                         <div class="input-group">
                             <div class="input-group-text" id="btnGroupAddon">Nº</div>
-                            <input type="text" class="form-control" placeholder="Digite o número de protocolo" aria-label="Digite o número de protocolo" aria-describedby="btnGroupAddon">
+                            <input type="text" class="form-control" name="protocolo" placeholder="Digite o número de protocolo" aria-label="Digite o número de protocolo" aria-describedby="btnGroupAddon">
                         </div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Sair</button>
-                        <button type="button" class="btn btn-dark">Consultar</button>
+                        <button type="submit" class="btn btn-dark">Consultar</button>
                     </div>
                 </form>
             </div>
