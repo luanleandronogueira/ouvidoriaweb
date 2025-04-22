@@ -13,7 +13,6 @@ $entidade = $todas_entidades->chama_entidades();
 
 if (!empty($_GET)) {
     $ent = $todas_entidades->chama_entidade($_GET['id']);
-
 }
 
 ?>
@@ -67,7 +66,7 @@ if (!empty($_GET)) {
                             <input type="hidden" name="entidade_nome" value="<?= $ent['nome_entidade'] ?>">
 
                             <div class="text-center">
-                                <a href="recuperar_senha.php?id=<?=$ent['id_entidade']?>">Esqueci à Senha</a> | <a href="criar_usuario.php?id=<?=$ent['id_entidade']?>">Criar um Usuário</a>
+                                <a href="recuperar_senha.php?id=<?= $ent['id_entidade'] ?>">Esqueci à Senha</a> | <a href="criar_usuario.php?id=<?= $ent['id_entidade'] ?>">Criar um Usuário</a>
                             </div>
                             <div class="text-center mt-3">
                                 <button type="submit" class="btn btn-primary justify-center">Entrar</button>
@@ -77,7 +76,8 @@ if (!empty($_GET)) {
                                 <h4>Realize sua Solicitação Anônima</h4>
                             </center>
                             <div class="text-center mt-3">
-                                <a href="denuncia_anonima.php?id=<?=$ent['id_entidade']?>&&id_manifestacao=5" class="btn btn-dark justify-center">Denúncia Anônima</a>
+                                <a href="denuncia_anonima.php?id=<?= $ent['id_entidade'] ?>&&id_manifestacao=5" class="btn btn-sm btn-dark justify-center">Denúncia Anônima</a>
+                                <a type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn-sm btn-warning justify-center">Consultar Denúncia Anônima</a>
                             </div>
                             <!-- <hr> -->
                             <!-- <div class="text-center mt-3">
@@ -109,6 +109,31 @@ if (!empty($_GET)) {
                 <div class="text-center">
                     <img src="assets/images/ouvidoria_web.png" alt="" width="400px">
                 </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Consulte usando o Nº do Protocolo</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <!-- Formulario de consulta a solicitação anonima -->
+                <form action="" method="get">
+                    <div class="modal-body">
+                        <div class="input-group">
+                            <div class="input-group-text" id="btnGroupAddon">Nº</div>
+                            <input type="text" class="form-control" placeholder="Digite o número de protocolo" aria-label="Digite o número de protocolo" aria-describedby="btnGroupAddon">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Sair</button>
+                        <button type="button" class="btn btn-dark">Consultar</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>

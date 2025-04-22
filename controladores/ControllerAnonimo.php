@@ -65,9 +65,6 @@
                 <a class="navbar-brand" href="dashboard.php">
                     <img src="assets/images/ouvidoria_web_branco_logo.png" alt="Logo" width="50" height="50" class="d-inline-block align-text-top">
                 </a>
-                <button class="navbar-toggler border-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
                 <div class="collapse navbar-collapse" id="navbarNavDropdown">
 
                 </div>
@@ -75,35 +72,3 @@
         </nav>
     </header>
     <main>
-
-        <!-- <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions">Enable both scrolling & backdrop</button> -->
-
-        <div class="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions" aria-labelledby="offcanvasWithBothOptionsLabel">
-            <div class="offcanvas-header">
-                <h5 class="offcanvas-title" id="offcanvasWithBothOptionsLabel">Ouvidoria Web - Menu</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-            </div>
-            <div class="offcanvas-body">
-                <ul>
-                    <p><a href="perfil.php">Ver Perfil</a></p>
-                    <p>
-                    <div class="dropdown">
-                        <a class="dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Manifestações
-    </a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="registrar_manifestacao.php?id_manifestacao=2">Ouvidoria</a></li>
-                            <li><a class="dropdown-item" href="registrar_manifestacao.php?id_manifestacao=5">Denúncia</a></li>
-                            <li><a class="dropdown-item" href="registrar_manifestacao.php?id_manifestacao=1">Elogio</a></li>
-                            <li><a class="dropdown-item" href="registrar_manifestacao.php?id_manifestacao=3">Reclamação</a></li>
-                            <li><a class="dropdown-item" href="registrar_manifestacao.php?id_manifestacao=4">Solicitação</a></li>
-                        </ul>
-                    </div>
-                    </p>
-                    <p><a href="dashboard.php">Registrar Manifestação</a></p>
-                    <p><a href="mapa_site.php">Mapa do Site</a></p>
-                    <p><a href="minhas_manifestacoes.php">Minhas Manifestações</a></p>
-                    <p><a href="sair.php">Sair</a></p>
-                </ul>
-            </div>
-        </div>

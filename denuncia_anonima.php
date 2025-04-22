@@ -94,4 +94,4 @@ $_SESSION['csrf_token'] = '';
 
 
 
-<?php include_once 'controladores/Footer.php' ?>
+<?php include_once 'controladores/FooterAnonimo.php' ?>

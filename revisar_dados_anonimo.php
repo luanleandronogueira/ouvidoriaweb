@@ -109,4 +109,4 @@ if($_FILES['arquivo_manifestacao']['error'] != 4 AND $_FILES['arquivo_manifestac
     </div>
 </section>
 
-<?php include_once 'controladores/Footer.php' ?>
+<?php include_once 'controladores/FooterAnonimo.php' ?>
